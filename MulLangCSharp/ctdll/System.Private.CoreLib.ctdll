@@ -749,7 +749,7 @@ GetTokenFor	取得權杖給	方法
 Item5	項目5	屬性
 MultiplyHigh	乘高	方法
 NegativeZero	負零	常數
-Pi	圓周率	常數
+Pi	圓周率常數	常數
 ReadOnly	讀取僅	方法
 ReverseBits	反轉位元群	方法
 ReverseElementBits	反轉元素位元群	方法

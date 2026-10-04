@@ -473,6 +473,22 @@ public static class Translator
         /// <summary>翻譯一段識別字字元：以「的」（→ .）與「之」（→ 空白）切開，每段做完整詞比對。</summary>
         private void TranslateRun(int i, int e)
         {
+            // 含有「的」「之」的運算子詞（如果的話就 → ?、委派之 → =>、繼承之 → :）要在切開前先認出來。
+            int sp = -1;
+            string? spWord = null;
+            foreach (var word in KeywordDictionary.PreSplitOperators)
+            {
+                int p = S.IndexOf(word, i, e - i, StringComparison.Ordinal);
+                if (p >= 0 && (sp < 0 || p < sp)) { sp = p; spWord = word; }
+            }
+            if (spWord is not null)
+            {
+                if (sp > i) TranslateRun(i, sp);
+                Emit(KeywordDictionary.ChineseToCSharp[spWord], sp);
+                if (sp + spWord.Length < e) TranslateRun(sp + spWord.Length, e);
+                return;
+            }
+
             int pieceStart = i;
             for (int k = i; k <= e; k++)
             {

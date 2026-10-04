@@ -22,21 +22,24 @@ public static class CodeFormatter
     private static readonly Lazy<AdhocWorkspace> Workspace = new(() => new AdhocWorkspace());
 
     /// <summary>C# 運算子 → 可黏著寫的中文詞；prefixOnly 表示只黏後面（非）。</summary>
-    private static readonly Dictionary<SyntaxKind, (string word, bool prefixOnly)> GlueOperators = new()
+    private static readonly Dictionary<SyntaxKind, (string word, bool prefixOnly)[]> GlueOperators = new()
     {
-        [SyntaxKind.EqualsToken] = ("被指派", false),
-        [SyntaxKind.PlusEqualsToken] = ("加上", false),
-        [SyntaxKind.MinusEqualsToken] = ("減掉", false),
-        [SyntaxKind.AmpersandAmpersandToken] = ("而且", false),
-        [SyntaxKind.BarBarToken] = ("或是", false),
-        [SyntaxKind.ExclamationToken] = ("非", true),
-        [SyntaxKind.SemicolonToken] = ("接著", false),
-        [SyntaxKind.EqualsEqualsToken] = ("等於", false),
-        [SyntaxKind.ExclamationEqualsToken] = ("不等於", false),
-        [SyntaxKind.GreaterThanToken] = ("大於", false),
-        [SyntaxKind.LessThanToken] = ("小於", false),
-        [SyntaxKind.GreaterThanEqualsToken] = ("大於等於", false),
-        [SyntaxKind.LessThanEqualsToken] = ("小於等於", false),
+        [SyntaxKind.EqualsToken] = new[] { ("被指派", false) },
+        [SyntaxKind.PlusEqualsToken] = new[] { ("加上", false) },
+        [SyntaxKind.MinusEqualsToken] = new[] { ("減掉", false) },
+        [SyntaxKind.AmpersandAmpersandToken] = new[] { ("而且", false) },
+        [SyntaxKind.BarBarToken] = new[] { ("或是", false) },
+        [SyntaxKind.ExclamationToken] = new[] { ("非", true) },
+        [SyntaxKind.SemicolonToken] = new[] { ("接著", false) },
+        [SyntaxKind.EqualsEqualsToken] = new[] { ("等於", false) },
+        [SyntaxKind.ExclamationEqualsToken] = new[] { ("不等於", false) },
+        [SyntaxKind.GreaterThanToken] = new[] { ("大於", false) },
+        [SyntaxKind.LessThanToken] = new[] { ("小於", false) },
+        [SyntaxKind.GreaterThanEqualsToken] = new[] { ("大於等於", false) },
+        [SyntaxKind.LessThanEqualsToken] = new[] { ("小於等於", false) },
+        [SyntaxKind.EqualsGreaterThanToken] = new[] { ("委派之", false) },
+        [SyntaxKind.QuestionToken] = new[] { ("如果的話就", false) },
+        [SyntaxKind.ColonToken] = new[] { ("繼承之", false), ("或者是", false) },
     };
 
     public static IReadOnlyList<SourceEdit> ComputeEdits(string source, string newLine = "\r\n", int indentSize = 4, bool glue = true) =>
@@ -117,10 +120,12 @@ public static class CodeFormatter
         var candidates = new List<SourceEdit>();
         foreach (var token in root.DescendantTokens())
         {
-            if (!GlueOperators.TryGetValue(token.Kind(), out var op)) continue;
+            if (!GlueOperators.TryGetValue(token.Kind(), out var ops)) continue;
             if (token.IsKind(SyntaxKind.ExclamationToken) && token.Parent is not PrefixUnaryExpressionSyntax) continue;
             int start = translation.ToSourceOffset(token.SpanStart);
-            if (string.CompareOrdinal(text, start, op.word, 0, op.word.Length) != 0) continue; // 原文是符號（=、&&…）就不動
+            // 原文是哪一個中文詞（例如 : 可能是「繼承之」或「或者是」）；原文是符號（=、&&…）就不動
+            var op = ops.FirstOrDefault(o => string.CompareOrdinal(text, start, o.word, 0, o.word.Length) == 0);
+            if (op.word is null) continue;
 
             if (!op.prefixOnly && SpacesBefore(text, start) is { } before) candidates.Add(before);
             if (SpacesAfter(text, start + op.word.Length) is { } after) candidates.Add(after);

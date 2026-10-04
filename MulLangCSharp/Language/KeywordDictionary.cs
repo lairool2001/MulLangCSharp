@@ -143,6 +143,10 @@ public static class KeywordDictionary
         new("被指派", "=", WordCategory.運算子, "指派運算子（前後可不加空格）"),
         new("接著", ";", WordCategory.運算子, "陳述式分隔（前後可不加空格；行尾的 ; 本來就可省略）"),
         new("呼叫", "()", WordCategory.運算子, "空的括號，可黏著寫：主控台的讀行呼叫 = Console.ReadLine()"),
+        new("委派之", "=>", WordCategory.運算子, "Lambda／運算式主體，可黏著寫：人委派之人的分數 = 人 => 人.分數"),
+        new("繼承之", ":", WordCategory.運算子, "繼承／實作，可黏著寫：類別之甲繼承之表單 = class 甲 : Form"),
+        new("如果的話就", "?", WordCategory.運算子, "條件運算子前半，可黏著寫：條件如果的話就甲或者是乙 = 條件 ? 甲 : 乙"),
+        new("或者是", ":", WordCategory.運算子, "條件運算子後半（配合「如果的話就」）"),
         new("註解", "//", WordCategory.關鍵字, "單行註解：之後到行尾都是註解"),
         new("開始註解", "/*", WordCategory.關鍵字, "區塊註解開始（可跨行），以「結束註解」結束"),
         new("結束註解", "*/", WordCategory.關鍵字, "區塊註解結束"),
@@ -164,7 +168,10 @@ public static class KeywordDictionary
     };
 
     /// <summary>可嵌在識別字之間、前後不需空格的運算子（例如「x被指派1」）。</summary>
-    public static readonly IReadOnlyList<string> EmbeddableOperators = new[] { "被指派", "加上", "減掉", "而且", "或是", "接著", "大於等於", "小於等於", "不等於", "大於", "小於", "等於", "呼叫" };
+    public static readonly IReadOnlyList<string> EmbeddableOperators = new[] { "被指派", "加上", "減掉", "而且", "或是", "接著", "大於等於", "小於等於", "不等於", "大於", "小於", "等於", "呼叫", "或者是" };
+
+    /// <summary>含有「的」「之」的運算子詞：轉換時要在以「的」「之」切開之前先認出來（也都可以黏著寫）。</summary>
+    public static readonly IReadOnlyList<string> PreSplitOperators = new[] { "如果的話就", "委派之", "繼承之" };
 
     /// <summary>可直接黏在變數前（前置）或後（後置）的運算子（例如「加一c」「c加一」）。</summary>
     public static readonly IReadOnlyList<string> AffixOperators = new[] { "加一", "減一" };

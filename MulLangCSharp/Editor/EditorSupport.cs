@@ -29,7 +29,7 @@ public static class ChineseHighlighting
 
         // 詞的邊界：非識別字字元，或「的」「之」，或黏著寫的運算子（被指派、加上、加一、非…），
         // 因此「主控台的寫行」「使用之系統」「暫停中被指派假」中的每個詞都能各自上色。
-        string glued = string.Join("|", KeywordDictionary.EmbeddableOperators
+        string glued = string.Join("|", KeywordDictionary.EmbeddableOperators.Concat(KeywordDictionary.PreSplitOperators)
             .Concat(KeywordDictionary.AffixOperators).Concat(KeywordDictionary.PrefixOperators)
             .OrderByDescending(w => w.Length).Select(Regex.Escape));
         string separators = $"[{KeywordDictionary.MemberAccessChar}{KeywordDictionary.SpaceChar}]|{glued}";
@@ -79,11 +79,11 @@ public static class ChineseHighlighting
                   <Begin>'</Begin><End>'</End>
                   <RuleSet><Span begin="\\" end="." /></RuleSet>
                 </Span>
+                {{EmbeddedOperatorRules()}}
                 {{Rule("Keyword", Words(WordCategory.關鍵字))}}
                 {{Rule("Type", Words(WordCategory.型別))}}
                 {{Rule("Literal", Words(WordCategory.常值))}}
                 {{Rule("Operator", Words(WordCategory.運算子))}}
-                {{EmbeddedOperatorRules()}}
                 <Rule color="Member">的</Rule>
                 <Rule color="Separator">之</Rule>
                 <Rule color="Number">{{numberRule}}</Rule>
@@ -93,7 +93,7 @@ public static class ChineseHighlighting
         // 可嵌入的運算子（x被指派1）在任何位置都上色；加一／減一只在詞首或詞尾（加一c、c加一）上色。
         static string EmbeddedOperatorRules()
         {
-            string embed = string.Join("|", KeywordDictionary.EmbeddableOperators.OrderByDescending(w => w.Length).Select(Regex.Escape));
+            string embed = string.Join("|", KeywordDictionary.EmbeddableOperators.Concat(KeywordDictionary.PreSplitOperators).OrderByDescending(w => w.Length).Select(Regex.Escape));
             string affix = string.Join("|", KeywordDictionary.AffixOperators.Select(Regex.Escape));
             string affixRegex = $@"(?<![\w-[的之]])(?:{affix})|(?:{affix})(?![\w-[的之]])";
             string prefix = string.Join("|", KeywordDictionary.PrefixOperators.Select(Regex.Escape));
