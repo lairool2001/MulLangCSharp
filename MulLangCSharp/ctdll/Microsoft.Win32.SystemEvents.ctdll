@@ -1,0 +1,31 @@
+﻿# ctdll：Microsoft.Win32.SystemEvents 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：Microsoft.Win32.SystemEvents, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+SystemEvents	系統事件群	命名空間
+System	系統	命名空間
+SessionSwitchEventArgs	工作階段切換事件引數群	類別
+SessionSwitchEventHandler	工作階段切換事件處理常式	委派
+SessionSwitchReason	工作階段切換原因	列舉
+TimerElapsedEventArgs	計時器經過時間事件引數群	類別
+TimerElapsedEventHandler	計時器經過時間事件處理常式	委派
+BeginInvoke	開始叫用	方法
+EndInvoke	結尾叫用	方法
+Reason	原因	屬性
+Cancel	取消	屬性
+CreateTimer	建立計時器	方法
+InvokeOnEventsThread	叫用於事件群執行緒物件	方法
+LowMemory	低記憶體	事件
+Mode	模式	屬性
+SessionSwitch	工作階段切換	事件
+TimerElapsed	計時器經過時間	事件
+TimerId	計時器識別碼	屬性
+Color	色彩	列舉值
+ConsoleConnect	主控台連線	列舉值
+Mouse	滑鼠	列舉值
+Power	冪	列舉值
+Resume	恢復	列舉值
+SessionLock	工作階段鎖定	列舉值
+SessionUnlock	工作階段解除鎖定	列舉值
+VisualStyle	視覺風格	列舉值
+Window	視窗	列舉值

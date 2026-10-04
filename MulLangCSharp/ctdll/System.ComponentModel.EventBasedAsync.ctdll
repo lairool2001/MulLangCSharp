@@ -1,0 +1,30 @@
+﻿# ctdll：System.ComponentModel.EventBasedAsync 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：System.ComponentModel.EventBasedAsync, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+ComponentModel	元件模型	命名空間
+System	系統	命名空間
+AsyncCompletedEventArgs	非同步已完成事件引數群	類別
+AsyncCompletedEventHandler	非同步已完成事件處理常式	委派
+AsyncOperation	非同步作業	類別
+AsyncOperationManager	非同步作業管理員	類別
+BackgroundWorker	背景背景工作	類別
+RunWorkerCompletedEventArgs	執行背景工作已完成事件引數群	類別
+RunWorkerCompletedEventHandler	執行背景工作已完成事件處理常式	委派
+BeginInvoke	開始叫用	方法
+EndInvoke	結尾叫用	方法
+UserState	使用者狀態	屬性
+Result	結果	屬性
+RunWorkerAsync	執行背景工作非同步	方法
+SynchronizationContext	同步處理內容環境	屬性
+Argument	引數	屬性
+CancelAsync	取消非同步	方法
+CancellationPending	取消作業擱置	屬性
+CreateOperation	建立作業	方法
+Dispose	處置	方法
+Error	錯誤	屬性
+OnRunWorkerCompleted	於執行背景工作已完成	方法
+OperationCompleted	作業已完成	方法
+Post	張貼	方法
+PostOperationCompleted	張貼作業已完成	方法
+RunWorkerCompleted	執行背景工作已完成	事件

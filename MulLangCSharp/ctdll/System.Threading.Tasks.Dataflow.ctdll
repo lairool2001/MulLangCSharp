@@ -1,0 +1,44 @@
+﻿# ctdll：System.Threading.Tasks.Dataflow 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：System.Threading.Tasks.Dataflow, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+Internal	內部	命名空間
+System	系統	命名空間
+Tasks	工作集	命名空間
+Threading	執行緒	命名空間
+Collections	集合	命名空間
+Concurrent	並行	命名空間
+JoinBlock	連接區塊	類別
+ActionBlock	動作區塊	類別
+BufferBlock	緩衝區區塊	類別
+ISourceBlock	來源區塊介面	介面
+ITargetBlock	目標區塊介面	介面
+TransformBlock	變換區塊	類別
+LinkTo	連結轉	方法
+Complete	完成	方法
+TryReceive	嘗試接收	方法
+ToString	轉字串	方法
+TryReceiveAll	嘗試接收全部	方法
+OutputCount	輸出結果數量	屬性
+Choose	選擇	方法
+Receive	接收	方法
+ReceiveAsync	接收非同步	方法
+Target1	目標1	屬性
+Target2	目標2	屬性
+InputCount	輸入數量	屬性
+Equals	相等	方法
+OutputAvailableAsync	輸出結果可用非同步	方法
+Post	張貼	方法
+SendAsync	傳送非同步	方法
+Target3	目標3	屬性
+Append	附加	屬性
+CancellationToken	取消作業權杖	屬性
+Count	數量	屬性
+GetHashCode	取得雜湊程式碼	方法
+Id	識別碼	屬性
+IsValid	是否有效	屬性
+NameFormat	名稱格式化	屬性
+NullTarget	空目標	方法
+ReceiveAllAsync	接收全部非同步	方法
+TaskScheduler	工作排程器	屬性
+NotAvailable	不可用	列舉值

@@ -1,0 +1,47 @@
+﻿# ctdll：System.Formats.Nrbf 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：System.Formats.Nrbf, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+System	系統	命名空間
+ArrayRecord	陣列記錄	類別
+ClassRecord	類別記錄	類別
+Id	識別碼	屬性
+TypeName	型別名稱	屬性
+Decode	解碼	方法
+Equals	相等	方法
+GetArray	取得陣列	方法
+Value	值	屬性
+DecodeClassRecord	解碼類別記錄	方法
+GetArrayRecord	取得陣列記錄	方法
+GetBoolean	取得布林值	方法
+GetByte	取得位元組	方法
+GetChar	取得字元	方法
+GetClassRecord	取得類別記錄	方法
+GetDateTime	取得日期時間	方法
+GetDecimal	取得小數	方法
+GetDouble	取得雙精度	方法
+GetHashCode	取得雜湊程式碼	方法
+GetInt16	取得整數16	方法
+GetInt32	取得整數32	方法
+GetInt64	取得整數64	方法
+GetRawValue	取得原始值	方法
+GetSingle	取得單一	方法
+GetString	取得字串	方法
+GetTimeSpan	取得時間跨度	方法
+HasMember	有成員	方法
+Length	長度	屬性
+MemberNames	成員名稱群	屬性
+Rank	維度	屬性
+RecordType	記錄型別	屬性
+TypeNameMatches	型別名稱符合項目	方法
+TypeNameParseOptions	型別名稱解析選項群	屬性
+ArraySingleObject	陣列單一物件	列舉值
+ArraySingleString	陣列單一字串	列舉值
+BinaryArray	二進位陣列	列舉值
+BinaryObjectString	二進位物件字串	列舉值
+ClassWithId	類別搭配識別碼	列舉值
+MemberReference	成員引用	列舉值
+MessageEnd	訊息結尾	列舉值
+MethodCall	方法呼叫	列舉值
+MethodReturn	方法回傳	列舉值
+ObjectNull	物件空	列舉值

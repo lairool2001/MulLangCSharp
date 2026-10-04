@@ -1,0 +1,21 @@
+﻿# ctdll：System.Diagnostics.FileVersionInfo 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：System.Diagnostics.FileVersionInfo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+Diagnostics	診斷	命名空間
+System	系統	命名空間
+FileVersionInfo	檔案版本資訊	類別
+FileBuildPart	檔案建置部分	屬性
+FileDescription	檔案描述	屬性
+FileName	檔案名稱	屬性
+FilePrivatePart	檔案私有部分	屬性
+FileVersion	檔案版本	屬性
+GetVersionInfo	取得版本資訊	方法
+InternalName	內部名稱	屬性
+IsDebug	是否偵錯	屬性
+IsPrivateBuild	是否私有建置	屬性
+IsSpecialBuild	是否特殊建置	屬性
+Language	語言	屬性
+PrivateBuild	私有建置	屬性
+SpecialBuild	特殊建置	屬性
+ToString	轉字串	方法

@@ -1,0 +1,18 @@
+﻿# ctdll：System.IO.Compression.ZipFile 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：System.IO.Compression.ZipFile, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+IO	輸入輸出	命名空間
+System	系統	命名空間
+ExtractToDirectory	取出轉目錄	方法
+ExtractToDirectoryAsync	取出轉目錄非同步	方法
+CreateFromDirectory	建立從目錄	方法
+CreateFromDirectoryAsync	建立從目錄非同步	方法
+CreateEntryFromFile	建立條目從檔案	方法
+CreateEntryFromFileAsync	建立條目從檔案非同步	方法
+ExtractToFile	取出轉檔案	方法
+ExtractToFileAsync	取出轉檔案非同步	方法
+Open	開啟	方法
+OpenAsync	開啟非同步	方法
+OpenRead	開啟讀取	方法
+OpenReadAsync	開啟讀取非同步	方法

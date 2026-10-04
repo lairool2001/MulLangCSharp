@@ -1,0 +1,27 @@
+﻿# ctdll：Microsoft.CSharp 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：Microsoft.CSharp, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+Runtime	執行階段	命名空間
+System	系統	命名空間
+BinaryOperation	二進位作業	方法
+Convert	轉換	方法
+Create	建立	方法
+GetIndex	取得索引	方法
+GetMember	取得成員	方法
+Invoke	叫用	方法
+InvokeConstructor	叫用建構函式	方法
+InvokeMember	叫用成員	方法
+IsEvent	是否事件	方法
+SetIndex	設定索引	方法
+SetMember	設定成員	方法
+None	無	列舉值
+Constant	常數值	列舉值
+ConvertArrayIndex	轉換陣列索引	列舉值
+ConvertExplicit	轉換明確	列舉值
+InvokeSimpleName	叫用簡單名稱	列舉值
+InvokeSpecialName	叫用特殊名稱	列舉值
+IsOut	是否輸出	列舉值
+IsRef	是否參考	列舉值
+IsStaticType	是否靜態型別	列舉值
+UseCompileTimeType	使用編譯時間型別	列舉值

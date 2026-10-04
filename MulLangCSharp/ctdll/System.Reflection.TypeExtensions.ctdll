@@ -1,0 +1,22 @@
+﻿# ctdll：System.Reflection.TypeExtensions 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：System.Reflection.TypeExtensions, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+Reflection	反射	命名空間
+System	系統	命名空間
+GetProperty	取得屬性	方法
+GetMethod	取得方法	方法
+GetAddMethod	取得新增方法	方法
+GetEvent	取得事件	方法
+GetEvents	取得事件群	方法
+GetField	取得欄位	方法
+GetGetMethod	取得取得方法	方法
+GetMember	取得成員	方法
+GetRemoveMethod	取得移除方法	方法
+GetSetMethod	取得設定方法	方法
+GetConstructor	取得建構函式	方法
+GetGenericArguments	取得泛型引數群	方法
+GetModuleVersionId	取得模組版本識別碼	方法
+GetTypes	取得型別群	方法
+HasModuleVersionId	有模組版本識別碼	方法
+IsInstanceOfType	是否執行個體之型別	方法

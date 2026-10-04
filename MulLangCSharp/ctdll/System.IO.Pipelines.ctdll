@@ -1,0 +1,41 @@
+﻿# ctdll：System.IO.Pipelines 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：System.IO.Pipelines, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+IO	輸入輸出	命名空間
+System	系統	命名空間
+FlushResult	排清結果	結構
+ReadResult	讀取結果	結構
+CopyToAsync	複製轉非同步	方法
+Create	建立	方法
+Pool	集區	屬性
+AsStream	為資料流	方法
+Complete	完成	方法
+CompleteAsync	完成非同步	方法
+IsCompleted	是否已完成	屬性
+Buffer	緩衝區	屬性
+BufferSize	緩衝區大小	屬性
+CancelPendingFlush	取消擱置排清	方法
+CancelPendingRead	取消擱置讀取	方法
+CopyFromAsync	複製從非同步	方法
+Default	預設	屬性
+FlushAsync	排清非同步	方法
+GetMemory	取得記憶體	方法
+GetSpan	取得跨度	方法
+Input	輸入	屬性
+MinimumBufferSize	最小限度緩衝區大小	屬性
+MinimumReadSize	最小限度讀取大小	屬性
+OnReaderCompleted	於讀取器已完成	方法
+OnWriterCompleted	於寫入器已完成	方法
+Output	輸出結果	屬性
+ReadAsync	讀取非同步	方法
+Reader	讀取器	屬性
+ReaderScheduler	讀取器排程器	屬性
+Reset	重設	方法
+Schedule	排程	方法
+ThreadPool	執行緒物件集區	屬性
+TryRead	嘗試讀取	方法
+UseSynchronizationContext	使用同步處理內容環境	屬性
+WriteAsync	寫非同步	方法
+Writer	寫入器	屬性
+WriterScheduler	寫入器排程器	屬性

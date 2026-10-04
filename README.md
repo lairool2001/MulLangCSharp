@@ -1,0 +1,61 @@
+﻿# 中文 C# 編輯器 (MulLangCSharp)
+
+用中文關鍵字撰寫 C#，可編譯、執行、偵錯的 WPF 編輯器。
+
+```bash
+dotnet run --project MulLangCSharp
+```
+
+## 自然對人工語言轉換
+
+把中文（自然語言）寫成的程式碼轉換成 C#（人工語言）的機制，規則如下：
+
+- **固定字典映射**：識別字以「完整詞」比對 [KeywordDictionary.cs](MulLangCSharp/Language/KeywordDictionary.cs)，例如 `如果`→`if`、`整數`→`int`、`主控台`→`Console`。
+- **「的」例外**：在程式碼中任何位置都直接轉成 `.`，例如 `主控台的寫行` → `Console.WriteLine`。
+- 字串、字元、註解內容不轉換；插值字串 `$"…{運算式}…"` 的大括號內會轉換。
+- **可黏著寫的運算子**：`被指派`(=)、`加上`(+=)、`減掉`(-=) 前後不需空格（`c被指派0`）；`加一`(++)、`減一`(--) 可直接接在變數前後（`加一c`、`c加一`）。
+- 全形標點（`，；（）｛｝`…）轉為半形。
+- 識別字前加 `@` 可停用轉換（例如 `@目的` 不會被拆成 `目.`）。
+- 轉換不增減換行，所以中文原始碼與 C# 行號一一對應。
+
+### ctdll 轉換表
+
+函式庫名稱（`Console`、`WriteLine`、`ConsoleColor.Yellow`…）由各參考組件自動產生的 **ctdll 檔**轉換：
+
+- **系統 dll 已預先做好**：`MulLangCSharp\ctdll\` 內的 169 個 ctdll 檔隨程式輸出，啟動時直接載入；程式碼中不再手工對照函式庫名稱（只保留 `程式`、`主程式` 這兩個慣用名稱）。
+- **使用者自己的 dll**：在原始碼開頭寫 `#參考 "MyLib.dll"`（或 `#r`；相對路徑以原始碼檔案資料夾為準），或用「工具 → 加入參考 DLL…」。編譯、IntelliSense、執行都會使用它，並自動在 dll 旁產生 `MyLib.ctdll`（dll 更新時會補上新名稱）。
+- 產生方式：把 API 名稱依大小寫拆成英文單字，逐字查 [WordGlossary.cs](MulLangCSharp/Language/WordGlossary.cs) 組成中文，例如 `SetCursorPosition` → 設定＋游標＋位置 = `設定游標位置`；有任何單字查不到就不產生。
+- 檔案格式：UTF-8 文字，每行 `英文名稱<Tab>中文名稱<Tab>種類`，可直接修改中文名稱或刪除整行。
+- 優先順序：內建關鍵字字典 > ctdll（System.Private.CoreLib、System.Console… 優先）。中文名稱重複時先到先得。
+- 工具選單：加入參考 DLL／重新載入 ctdll 轉換表／更新系統 ctdll 轉換表（保留已修改名稱）／開啟 ctdll 資料夾。
+
+## 功能
+
+| 功能 | 快速鍵 |
+| --- | --- |
+| 編譯 | F6 |
+| 啟動但不偵錯（新主控台視窗） | Ctrl+F5 |
+| 開始偵錯 / 繼續 | F5 |
+| 逐步執行 / 不進入函式 / 跳離函式 | F11 / F10 / Shift+F11 |
+| 切換中斷點（或點左側邊界） | F9 |
+| 停止偵錯 | Shift+F5 |
+| 格式化文件（只調整縮排、空白、換行） | Ctrl+E, D |
+| IntelliSense 完成清單（輸入「的」或新詞時自動出現） | Ctrl+Space |
+
+- IntelliSense：依 Roslyn 語意列出成員／區域變數／型別（中文名稱優先），輸入「(」「,」顯示參數資訊，滑鼠停留顯示符號說明。
+- 右側即時顯示轉換後的 C#；錯誤清單與波浪底線即時更新，錯誤位置對應回中文原始碼。
+- 偵錯時顯示區域變數（物件、集合可展開）、呼叫堆疊；未處理的例外會在出錯的行暫停。
+- 檔案 → 匯入標準 C# 並轉成中文 / 匯出轉換後的 C#。
+
+## 架構
+
+- `Language/Translator.cs`：中文 ↔ C# 轉換器（附位置對照表供錯誤定位）。
+- `Build/CodeCompiler.cs`：Roslyn 編譯為 dll + runtimeconfig，由 `dotnet` 主機執行。
+- `Debugging/Instrumenter.cs`：偵錯插樁，在每個陳述式前插入掛鉤並以 Enter/Exit 追蹤呼叫堆疊。
+- `Debugging/DebugRuntimeSource.cs`：編入受偵錯程式的執行階段，透過具名管道與編輯器溝通。
+- `Debugging/DebugSession.cs`：啟動主控台程式並處理中斷／逐步指令。
+
+## 限制
+
+- 偵錯採插樁方式而非 CLR 偵錯器：中斷點以「陳述式」為單位，不支援監看運算式與執行中修改程式碼。
+- 多執行緒程式的逐步執行行為僅供參考；迭代器（`產生 回傳`）不追蹤呼叫堆疊框架。

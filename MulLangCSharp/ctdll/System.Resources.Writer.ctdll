@@ -1,0 +1,14 @@
+﻿# ctdll：System.Resources.Writer 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：System.Resources.Writer, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+System	系統	命名空間
+Writer	寫入器	命名空間
+IResourceWriter	資源寫入器介面	介面
+ResourceWriter	資源寫入器	類別
+AddResource	新增資源	方法
+Close	關閉	方法
+Generate	產生	方法
+AddResourceData	新增資源資料	方法
+Dispose	處置	方法
+TypeNameConverter	型別名稱轉換器	屬性

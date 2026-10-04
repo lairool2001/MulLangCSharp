@@ -1,0 +1,39 @@
+﻿# ctdll：System.IO.FileSystem.AccessControl 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：System.IO.FileSystem.AccessControl, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+AccessControl	存取控制項	命名空間
+IO	輸入輸出	命名空間
+System	系統	命名空間
+FileSystem	檔案系統	命名空間
+Security	安全性	命名空間
+DirectoryObjectSecurity	目錄物件安全性	類別
+DirectorySecurity	目錄安全性	類別
+FileSecurity	檔案安全性	類別
+FileSystemAccessRule	檔案系統存取規則	類別
+FileSystemSecurity	檔案系統安全性	類別
+GetAccessControl	取得存取控制項	方法
+SetAccessControl	設定存取控制項	方法
+AccessRuleFactory	存取規則工廠	方法
+AddAccessRule	新增存取規則	方法
+Create	建立	方法
+RemoveAccessRule	移除存取規則	方法
+RemoveAccessRuleAll	移除存取規則全部	方法
+ResetAccessRule	重設存取規則	方法
+SetAccessRule	設定存取規則	方法
+AccessRightType	存取右型別	屬性
+AccessRuleType	存取規則型別	屬性
+CreateDirectory	建立目錄	方法
+AppendData	附加資料	列舉值
+CreateFiles	建立檔案群	列舉值
+Delete	刪除	列舉值
+ExecuteFile	運行檔案	列舉值
+FullControl	完整控制項	列舉值
+ListDirectory	清單目錄	列舉值
+Read	讀取	列舉值
+ReadAndExecute	讀取與運行	列舉值
+ReadAttributes	讀取特性群	列舉值
+ReadData	讀取資料	列舉值
+Write	寫	列舉值
+WriteAttributes	寫特性群	列舉值
+WriteData	寫資料	列舉值

@@ -1,0 +1,27 @@
+﻿# ctdll：System.IO.MemoryMappedFiles 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：System.IO.MemoryMappedFiles, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+IO	輸入輸出	命名空間
+System	系統	命名空間
+CreateFromFile	建立從檔案	方法
+Dispose	處置	方法
+CreateNew	建立新	方法
+CreateOrOpen	建立或開啟	方法
+CreateViewStream	建立檢視資料流	方法
+Flush	排清	方法
+PointerOffset	指標位移	屬性
+ReleaseHandle	釋出控制代碼	方法
+IsInvalid	是否無效	屬性
+SetLength	設定長度	方法
+CopyOnWrite	複製於寫	列舉值
+Read	讀取	列舉值
+ReadExecute	讀取運行	列舉值
+ReadWrite	讀取寫	列舉值
+ReadWriteExecute	讀取寫運行	列舉值
+Write	寫	列舉值
+AccessSystemSecurity	存取系統安全性	列舉值
+Delete	刪除	列舉值
+Execute	運行	列舉值
+FullControl	完整控制項	列舉值
+None	無	列舉值

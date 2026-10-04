@@ -1,0 +1,20 @@
+﻿# ctdll：System.Net.NameResolution 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：System.Net.NameResolution, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+Net	網路	命名空間
+System	系統	命名空間
+GetHostEntryAsync	取得主機條目非同步	方法
+GetHostEntry	取得主機條目	方法
+BeginGetHostEntry	開始取得主機條目	方法
+GetHostByAddress	取得主機依位址	方法
+AddressList	位址清單	屬性
+BeginGetHostByName	開始取得主機依名稱	方法
+BeginResolve	開始解決	方法
+EndGetHostByName	結尾取得主機依名稱	方法
+EndGetHostEntry	結尾取得主機條目	方法
+EndResolve	結尾解決	方法
+GetHostByName	取得主機依名稱	方法
+GetHostName	取得主機名稱	方法
+HostName	主機名稱	屬性
+Resolve	解決	方法

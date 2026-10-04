@@ -1,0 +1,201 @@
+﻿<Window x:Class="MulLangCSharp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:avalon="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:dbg="clr-namespace:MulLangCSharp"
+        Title="中文 C# 編輯器" Height="820" Width="1280"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Microsoft JhengHei UI" FontSize="13">
+    <Window.Resources>
+        <Style x:Key="ToolButton" TargetType="Button">
+            <Setter Property="Padding" Value="8,3" />
+            <Setter Property="Margin" Value="1,0" />
+            <Setter Property="Focusable" Value="False" />
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.4" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <HierarchicalDataTemplate DataType="{x:Type dbg:VariableItem}" ItemsSource="{Binding Children}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Name}" FontWeight="SemiBold" Foreground="#1F4E79" />
+                <TextBlock Text=" = " Foreground="Gray" />
+                <TextBlock Text="{Binding Value}" />
+                <TextBlock Text="{Binding TypeDisplay}" Foreground="#888" Margin="8,0,0,0" FontStyle="Italic" />
+            </StackPanel>
+        </HierarchicalDataTemplate>
+    </Window.Resources>
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="檔案(_F)">
+                <MenuItem Header="新增(_N)" InputGestureText="Ctrl+N" Click="New_Click" />
+                <MenuItem Header="開啟(_O)…" InputGestureText="Ctrl+O" Click="Open_Click" />
+                <MenuItem Header="儲存(_S)" InputGestureText="Ctrl+S" Click="Save_Click" />
+                <MenuItem Header="另存新檔(_A)…" Click="SaveAs_Click" />
+                <Separator />
+                <MenuItem Header="匯入標準 C# 並轉成中文(_I)…" Click="ImportCSharp_Click" />
+                <MenuItem Header="匯出轉換後的 C#(_E)…" Click="ExportCSharp_Click" />
+                <Separator />
+                <MenuItem Header="結束(_X)" Click="Exit_Click" />
+            </MenuItem>
+            <MenuItem Header="編輯(_E)">
+                <MenuItem Header="復原" Command="Undo" />
+                <MenuItem Header="重做" Command="Redo" />
+                <Separator />
+                <MenuItem Header="剪下" Command="Cut" />
+                <MenuItem Header="複製" Command="Copy" />
+                <MenuItem Header="貼上" Command="Paste" />
+                <Separator />
+                <MenuItem Header="尋找…" InputGestureText="Ctrl+F" Click="Find_Click" />
+                <MenuItem Header="格式化文件" InputGestureText="Ctrl+E, D" Click="FormatDocument_Click" />
+                <MenuItem Header="自動完成" InputGestureText="Ctrl+J / Ctrl+Space" Click="Complete_Click" />
+            </MenuItem>
+            <MenuItem Header="建置(_B)">
+                <MenuItem Header="編譯(_B)" InputGestureText="F6" Click="Build_Click" />
+            </MenuItem>
+            <MenuItem Header="偵錯(_D)">
+                <MenuItem x:Name="MenuDebug" Header="開始偵錯 / 繼續" InputGestureText="F5" Click="DebugOrContinue_Click" />
+                <MenuItem x:Name="MenuRun" Header="啟動但不偵錯" InputGestureText="Ctrl+F5" Click="Run_Click" />
+                <MenuItem x:Name="MenuPause" Header="全部暫停" InputGestureText="Ctrl+Alt+Break" Click="Pause_Click" />
+                <MenuItem x:Name="MenuStop" Header="停止偵錯" InputGestureText="Shift+F5" Click="Stop_Click" />
+                <Separator />
+                <MenuItem x:Name="MenuStepInto" Header="逐步執行" InputGestureText="F11" Click="StepInto_Click" />
+                <MenuItem x:Name="MenuStepOver" Header="不進入函式" InputGestureText="F10" Click="StepOver_Click" />
+                <MenuItem x:Name="MenuStepOut" Header="跳離函式" InputGestureText="Shift+F11" Click="StepOut_Click" />
+                <Separator />
+                <MenuItem Header="切換中斷點" InputGestureText="F9" Click="ToggleBreakpoint_Click" />
+                <MenuItem Header="刪除所有中斷點" InputGestureText="Ctrl+Shift+F9" Click="ClearBreakpoints_Click" />
+            </MenuItem>
+            <MenuItem Header="工具(_T)">
+                <MenuItem Header="加入參考 DLL…" Click="AddReference_Click" />
+                <Separator />
+                <MenuItem Header="重新載入 ctdll 轉換表" Click="ReloadCtdll_Click" />
+                <MenuItem Header="更新系統 ctdll 轉換表（保留已修改名稱）" Click="RegenerateCtdll_Click" />
+                <MenuItem Header="開啟 ctdll 資料夾" Click="OpenCtdllFolder_Click" />
+            </MenuItem>
+            <MenuItem Header="檢視(_V)">
+                <MenuItem x:Name="MenuShowCSharp" Header="轉換後的 C# 面板" IsCheckable="True" IsChecked="True" Click="ToggleCSharpPanel_Click" />
+            </MenuItem>
+            <MenuItem Header="說明(_H)">
+                <MenuItem Header="關鍵字對照表…" Click="Dictionary_Click" />
+                <MenuItem Header="載入範例程式" Click="Sample_Click" />
+                <MenuItem Header="關於" Click="About_Click" />
+            </MenuItem>
+        </Menu>
+
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Style="{StaticResource ToolButton}" Click="New_Click" ToolTip="新增 (Ctrl+N)">📄 新增</Button>
+                <Button Style="{StaticResource ToolButton}" Click="Open_Click" ToolTip="開啟 (Ctrl+O)">📂 開啟</Button>
+                <Button Style="{StaticResource ToolButton}" Click="Save_Click" ToolTip="儲存 (Ctrl+S)">💾 儲存</Button>
+                <Separator />
+                <Button x:Name="BtnBuild" Style="{StaticResource ToolButton}" Click="Build_Click" ToolTip="編譯 (F6)">🔨 編譯</Button>
+                <Button x:Name="BtnRun" Style="{StaticResource ToolButton}" Click="Run_Click" ToolTip="啟動但不偵錯 (Ctrl+F5)">▷ 執行</Button>
+                <Button x:Name="BtnDebug" Style="{StaticResource ToolButton}" Click="DebugOrContinue_Click" ToolTip="開始偵錯 / 繼續 (F5)" Foreground="#107C10" FontWeight="Bold">▶ 偵錯</Button>
+                <Button x:Name="BtnPause" Style="{StaticResource ToolButton}" Click="Pause_Click" ToolTip="全部暫停">⏸ 暫停</Button>
+                <Button x:Name="BtnStop" Style="{StaticResource ToolButton}" Click="Stop_Click" ToolTip="停止偵錯 (Shift+F5)" Foreground="#C50F1F">■ 停止</Button>
+                <Separator />
+                <Button x:Name="BtnStepInto" Style="{StaticResource ToolButton}" Click="StepInto_Click" ToolTip="逐步執行 (F11)">↓ 逐步執行</Button>
+                <Button x:Name="BtnStepOver" Style="{StaticResource ToolButton}" Click="StepOver_Click" ToolTip="不進入函式 (F10)">↷ 不進入函式</Button>
+                <Button x:Name="BtnStepOut" Style="{StaticResource ToolButton}" Click="StepOut_Click" ToolTip="跳離函式 (Shift+F11)">↑ 跳離函式</Button>
+                <Separator />
+                <Button Style="{StaticResource ToolButton}" Click="ToggleBreakpoint_Click" ToolTip="切換中斷點 (F9)">● 中斷點</Button>
+            </ToolBar>
+        </ToolBarTray>
+
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock x:Name="StatusText" Text="就緒" />
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock x:Name="CaretText" Text="行 1，欄 1" />
+            </StatusBarItem>
+        </StatusBar>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" MinHeight="120" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="240" MinHeight="60" />
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="EditorGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition x:Name="SplitterColumn" Width="5" />
+                    <ColumnDefinition x:Name="CSharpColumn" Width="2*" />
+                </Grid.ColumnDefinitions>
+
+                <DockPanel>
+                    <Border DockPanel.Dock="Top" Background="#2D2D30" Padding="8,3">
+                        <TextBlock x:Name="EditorTitle" Text="中文 C# 原始碼" Foreground="White" />
+                    </Border>
+                    <avalon:TextEditor x:Name="Editor" FontFamily="Cascadia Mono, Consolas, Microsoft JhengHei" FontSize="15"
+                                       ShowLineNumbers="True" WordWrap="False" HorizontalScrollBarVisibility="Auto"
+                                       VerticalScrollBarVisibility="Auto" />
+                </DockPanel>
+
+                <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Background="#DDD" />
+
+                <DockPanel Grid.Column="2" x:Name="CSharpPanel">
+                    <Border DockPanel.Dock="Top" Background="#3E3E42" Padding="8,3">
+                        <TextBlock Text="轉換後的 C#（唯讀）" Foreground="White" />
+                    </Border>
+                    <avalon:TextEditor x:Name="CSharpView" FontFamily="Cascadia Mono, Consolas, Microsoft JhengHei" FontSize="14"
+                                       ShowLineNumbers="True" IsReadOnly="True" Background="#FAFAFA"
+                                       HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" />
+                </DockPanel>
+            </Grid>
+
+            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" Background="#DDD" />
+
+            <TabControl Grid.Row="2" x:Name="BottomTabs">
+                <TabItem Header="輸出" x:Name="TabOutput">
+                    <TextBox x:Name="OutputBox" IsReadOnly="True" FontFamily="Cascadia Mono, Consolas, Microsoft JhengHei"
+                             VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" TextWrapping="NoWrap"
+                             BorderThickness="0" />
+                </TabItem>
+                <TabItem x:Name="TabErrors" Header="錯誤清單">
+                    <ListView x:Name="ErrorList" MouseDoubleClick="ErrorList_DoubleClick" BorderThickness="0">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="類型" Width="50" DisplayMemberBinding="{Binding Severity}" />
+                                <GridViewColumn Header="代碼" Width="70" DisplayMemberBinding="{Binding Id}" />
+                                <GridViewColumn Header="說明" Width="760" DisplayMemberBinding="{Binding Message}" />
+                                <GridViewColumn Header="行" Width="50" DisplayMemberBinding="{Binding Line}" />
+                                <GridViewColumn Header="欄" Width="50" DisplayMemberBinding="{Binding Column}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </TabItem>
+                <TabItem x:Name="TabDebug" Header="偵錯">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Top" Text="區域變數" FontWeight="Bold" Margin="4,2" />
+                            <TreeView x:Name="VariablesTree" BorderThickness="0" FontFamily="Cascadia Mono, Consolas, Microsoft JhengHei" />
+                        </DockPanel>
+                        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Background="#EEE" />
+                        <DockPanel Grid.Column="2">
+                            <TextBlock DockPanel.Dock="Top" Text="呼叫堆疊" FontWeight="Bold" Margin="4,2" />
+                            <ListView x:Name="CallStackList" SelectionChanged="CallStack_SelectionChanged" BorderThickness="0">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="函式" Width="260" DisplayMemberBinding="{Binding Name}" />
+                                        <GridViewColumn Header="行" Width="50" DisplayMemberBinding="{Binding Line}" />
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </DockPanel>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </DockPanel>
+</Window>

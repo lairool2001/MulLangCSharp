@@ -1,0 +1,21 @@
+﻿# ctdll：System.Threading.Tasks.Parallel 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：System.Threading.Tasks.Parallel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+Parallel	平行	命名空間
+System	系統	命名空間
+Tasks	工作集	命名空間
+Threading	執行緒	命名空間
+ParallelLoopResult	平行迴圈結果	結構
+ParallelLoopState	平行迴圈狀態	類別
+ParallelOptions	平行選項群	類別
+ForEach	給每個	方法
+For	給	方法
+ForEachAsync	給每個非同步	方法
+ForAsync	給非同步	方法
+Invoke	叫用	方法
+Break	中斷	方法
+CancellationToken	取消作業權杖	屬性
+IsCompleted	是否已完成	屬性
+Stop	停止	方法
+TaskScheduler	工作排程器	屬性

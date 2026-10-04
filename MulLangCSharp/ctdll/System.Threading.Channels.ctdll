@@ -1,0 +1,31 @@
+﻿# ctdll：System.Threading.Channels 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：System.Threading.Channels, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+System	系統	命名空間
+Threading	執行緒	命名空間
+Collections	集合	命名空間
+Concurrent	並行	命名空間
+Generic	泛型	命名空間
+Internal	內部	命名空間
+CanCount	可以數量	屬性
+CanPeek	可以查看	屬性
+Capacity	容量	屬性
+Comparer	比較子	屬性
+Complete	完成	方法
+Count	數量	屬性
+FullMode	完整模式	屬性
+ReadAllAsync	讀取全部非同步	方法
+ReadAsync	讀取非同步	方法
+Reader	讀取器	屬性
+SingleReader	單一讀取器	屬性
+SingleWriter	單一寫入器	屬性
+TryComplete	嘗試完成	方法
+TryPeek	嘗試查看	方法
+TryRead	嘗試讀取	方法
+TryWrite	嘗試寫	方法
+WaitToReadAsync	等候轉讀取非同步	方法
+WaitToWriteAsync	等候轉寫非同步	方法
+WriteAsync	寫非同步	方法
+Writer	寫入器	屬性
+Wait	等候	列舉值

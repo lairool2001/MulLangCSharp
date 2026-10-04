@@ -1,0 +1,20 @@
+﻿# ctdll：System.Windows.Input.Manipulations 的自然對人工語言轉換表（自動產生，可手動修改）
+# 組件：System.Windows.Input.Manipulations, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+# 格式：英文名稱<Tab>中文名稱<Tab>種類；以 # 開頭為註解。修改中文名稱或刪除整行即可調整轉換。
+# 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
+Input	輸入	命名空間
+System	系統	命名空間
+Windows	視窗群	命名空間
+Completed	已完成	事件
+SetParameters	設定參數群	方法
+Complete	完成	方法
+Equals	相等	方法
+GetHashCode	取得雜湊程式碼	方法
+Id	識別碼	屬性
+IsRunning	是否執行中	屬性
+Process	處理序	方法
+Total	總計	屬性
+Zero	零	欄位
+All	全部	列舉值
+None	無	列舉值
+Scale	縮放	列舉值
