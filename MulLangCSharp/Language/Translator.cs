@@ -120,6 +120,17 @@ public static class Translator
 
     public static string ToChinese(string csharp) => new ReverseScanner(csharp).Run();
 
+    internal static bool IsFullWidthDigit(char c) => c is >= '０' and <= '９';
+
+    internal static bool IsFullWidthAlnum(char c) => c is >= '０' and <= '９' or >= 'Ａ' and <= 'Ｚ' or >= 'ａ' and <= 'ｚ';
+
+    internal static bool IsAsciiOrFullWidthAlnum(char c) => char.IsAsciiLetterOrDigit(c) || IsFullWidthAlnum(c);
+
+    /// <summary>全形英數字（Ａ－Ｚ、ａ－ｚ、０－９）→ 半形；其他字元不變。</summary>
+    public static char ToHalfWidth(char c) => IsFullWidthAlnum(c) ? (char)(c - 0xFEE0) : c;
+
+    public static string ToHalfWidth(string s) =>
+        s.Any(IsFullWidthAlnum) ? new string(s.Select(ToHalfWidth).ToArray()) : s;
     public static bool IsIdentStart(char c) => c == '_' || char.IsLetter(c);
 
     public static bool IsIdentPart(char c)
@@ -210,13 +221,14 @@ public static class Translator
                     Copy(i, e);
                     i = e;
                 }
-                else if (char.IsDigit(c))
+                else if (char.IsAsciiDigit(c) || IsFullWidthDigit(c))
                 {
                     int e = i;
-                    // 數字常值只吃 ASCII 字元，因此「1加上甲」中的「加上甲」仍會被翻譯。
-                    while (e < S.Length && (char.IsAsciiLetterOrDigit(S[e]) || S[e] == '_' || (S[e] == '.' && char.IsDigit(At(e + 1)))))
+                    // 數字常值只吃英數字（半形或全形，全形一律轉成半形），因此「1加上甲」中的「加上甲」仍會被翻譯。
+                    while (e < S.Length && (IsAsciiOrFullWidthAlnum(S[e]) || S[e] == '_' ||
+                                            (S[e] is '.' or '．' && (char.IsAsciiDigit(At(e + 1)) || IsFullWidthDigit(At(e + 1))))))
                         e++;
-                    Copy(i, e);
+                    for (int k = i; k < e; k++) Emit(S[k] == '．' ? '.' : ToHalfWidth(S[k]), k);
                     i = e;
                 }
                 else if (IsIdentStart(c))
@@ -231,6 +243,7 @@ public static class Translator
             }
             return i;
         }
+
 
         protected static bool IsSlash(char c) => c is '/' or '／';
 
@@ -370,7 +383,7 @@ public static class Translator
                 int e = i;
                 while (e < S.Length && IsIdentPart(S[e])) e++;
                 foreach (var part in S[i..e].Split(KeywordDictionary.MemberAccessChar, KeywordDictionary.SpaceChar))
-                    AddNameParts(part, set);
+                    AddNameParts(ToHalfWidth(part), set);
                 i = e;
             }
             return set;
@@ -508,7 +521,7 @@ public static class Translator
         private void TranslatePiece(int start, int end)
         {
             if (end <= start) return;
-            string piece = S.Substring(start, end - start);
+            string piece = ToHalfWidth(S.Substring(start, end - start));   // 全形英數字一律視為半形（長度不變）
             if (KeywordDictionary.ChineseToCSharp.TryGetValue(piece, out var mapped))
             {
                 Emit(mapped, start);
@@ -562,7 +575,7 @@ public static class Translator
                 }
             }
 
-            Copy(start, end);
+            for (int k = start; k < end; k++) Emit(ToHalfWidth(S[k]), k);
         }
 
         protected override int OnOther(int i, ref int depth, bool inHole, out bool stop)

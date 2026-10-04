@@ -164,13 +164,14 @@ public sealed class IntelliSenseService
     private void OnTextEntering(object sender, TextCompositionEventArgs e)
     {
         // 全形符號（輸入法中文模式）→ 半形，讓後續的參數資訊、自動完成照常運作。
-        if (Enabled && ConvertFullWidthOnTyping && e.Text.Any(ch => FullWidthBrackets.ContainsKey(ch) || ch == FullWidthQuote))
+        if (Enabled && ConvertFullWidthOnTyping && e.Text.Any(ch => FullWidthBrackets.ContainsKey(ch) || ch == FullWidthQuote || Translator.ToHalfWidth(ch) != ch))
         {
             bool inComment = CaretInComment();
             bool inStringOrComment = inComment || CaretInStringOrComment();
             var converted = new string(e.Text.Select(ch =>
                 ch == FullWidthQuote ? (inComment ? ch : '"')
                 : FullWidthBrackets.TryGetValue(ch, out var h) && !inStringOrComment ? h
+                : Translator.ToHalfWidth(ch) is var a && a != ch && !inStringOrComment ? a   // 全形英數字 → 半形
                 : ch).ToArray());
             if (converted != e.Text)
             {

@@ -109,7 +109,7 @@
                               ToolTip="開啟：格式化時把 被指派、加上、減掉、而且、或是、非 黏著寫（c被指派0）&#x0a;關閉：一律加上標準空白（c 被指派 0）">🔗 黏著寫</ToggleButton>
                 <ToggleButton x:Name="BtnHalfWidth" Padding="8,3" Margin="1,0" Focusable="False" IsChecked="False"
                               Checked="HalfWidthToggle_Changed" Unchecked="HalfWidthToggle_Changed"
-                              ToolTip="開啟：打字時把全形符號（（）｛｝［］，＜＞＄＂）自動換成半形&#x0a;關閉：全形與半形互通，打什麼就保留什麼">半形輸入</ToggleButton>
+                              ToolTip="開啟：打字時把全形符號（（）｛｝［］，＜＞＄＂）與全形英數字（Ａ－Ｚ ａ－ｚ ０－９）自動換成半形&#x0a;關閉：全形與半形互通，打什麼就保留什麼">半形輸入</ToggleButton>
             </ToolBar>
         </ToolBarTray>
 
