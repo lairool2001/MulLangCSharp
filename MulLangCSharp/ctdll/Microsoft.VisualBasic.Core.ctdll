@@ -9,7 +9,7 @@ FileSystem	檔案系統	類別
 Information	資訊內容	類別
 BooleanType	布林值型別	類別
 ByteType	位元組型別	類別
-CallType	呼叫型別	列舉
+CallType	調用型別	列舉
 CharArrayType	字元陣列型別	類別
 CharType	字元型別	類別
 Collection	集合物件	類別
@@ -24,8 +24,8 @@ DeleteDirectoryOption	刪除目錄選項	列舉
 DoubleType	雙精度型別	類別
 FieldType	欄位型別	列舉
 FileAttribute	檔案特性	列舉
-FirstDayOfWeek	第一個日之週	列舉
-FirstWeekOfYear	第一個週之年	列舉
+FirstDayOfWeek	第一個日所屬週	列舉
+FirstWeekOfYear	第一個週所屬年	列舉
 ForLoopControl	給迴圈控制項	類別
 IntegerType	整數值型別	類別
 LongType	長整數型別	類別
@@ -58,7 +58,7 @@ Lock	鎖定	方法
 Parse	解析	方法
 ToDecimal	轉小數	方法
 Unlock	解除鎖定	方法
-CallByName	呼叫依名稱	方法
+CallByName	調用依名稱	方法
 Clear	清除	方法
 Count	數量	屬性
 DateAdd	日期新增	方法
@@ -135,7 +135,7 @@ Description	描述	屬性
 DirectoryExists	目錄存在	方法
 DisposeMethod	處置方法	屬性
 DivideObject	除物件	方法
-EndOfData	結尾之資料	屬性
+EndOfData	結尾所屬資料	屬性
 ErrorLine	錯誤行	屬性
 ErrorLineNumber	錯誤行數值	屬性
 EventID	事件識別碼	屬性
@@ -216,7 +216,7 @@ Switch	切換	方法
 Tab	索引標籤	常數
 Temp	暫存	屬性
 TextFieldType	文字欄位型別	屬性
-TimeOfDay	時間之日	屬性
+TimeOfDay	時間所屬日	屬性
 TimeSerial	時間串列	方法
 TimeString	時間字串	屬性
 TimeValue	時間值	方法
@@ -239,7 +239,7 @@ Cancel	取消	列舉值
 Char	字元	列舉值
 DataObject	資料物件	列舉值
 Date	日期	列舉值
-DayOfYear	日之年	列舉值
+DayOfYear	日所屬年	列舉值
 Decimal	小數	列舉值
 DefaultButton1	預設按鈕1	列舉值
 DefaultButton2	預設按鈕2	列舉值
@@ -284,4 +284,4 @@ Text	文字	列舉值
 ThrowException	拋出例外	列舉值
 True	真	列舉值
 UseDefault	使用預設	列舉值
-WeekOfYear	週之年	列舉值
+WeekOfYear	週所屬年	列舉值

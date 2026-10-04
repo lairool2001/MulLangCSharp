@@ -53,12 +53,10 @@ FirstAttribute	第一個特性	屬性
 FirstNode	第一個節點	屬性
 GetDefaultNamespace	取得預設命名空間	方法
 GetName	取得名稱	方法
-GetNamespaceOfPrefix	取得命名空間之前置詞	方法
-GetPrefixOfNamespace	取得前置詞之命名空間	方法
+GetNamespaceOfPrefix	取得命名空間所屬前置詞	方法
+GetPrefixOfNamespace	取得前置詞所屬命名空間	方法
 HasAttributes	有特性群	屬性
 InDocumentOrder	在文件順序	方法
-IsAfter	是否之後	方法
-IsBefore	是否之前	方法
 IsEmpty	是否空白	屬性
 LastAttribute	最後一個特性	屬性
 LastNode	最後一個節點	屬性

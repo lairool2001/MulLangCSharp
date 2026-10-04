@@ -13,7 +13,7 @@ CodeBaseReferenceExpression	程式碼基底引用運算式	類別
 CodeBinaryOperatorExpression	程式碼二進位運算子運算式	類別
 CodeBinaryOperatorType	程式碼二進位運算子型別	列舉
 CodeCastExpression	程式碼轉型運算式	類別
-CodeComment	程式碼註解	類別
+CodeComment	程式碼備註	類別
 CodeCompileUnit	程式碼編譯單位	類別
 CodeConstructor	程式碼建構函式	類別
 CodeDefaultValueExpression	程式碼預設值運算式	類別
@@ -41,7 +41,7 @@ CodeTypeConstructor	程式碼型別建構函式	類別
 CodeTypeDelegate	程式碼型別委派	類別
 CodeTypeMember	程式碼型別成員	類別
 CodeTypeMemberCollection	程式碼型別成員集合物件	類別
-CodeTypeOfExpression	程式碼型別之運算式	類別
+CodeTypeOfExpression	程式碼型別所屬運算式	類別
 CodeTypeParameter	程式碼型別參數	類別
 CodeTypeParameterCollection	程式碼型別參數集合物件	類別
 CodeTypeReference	程式碼型別引用	類別
@@ -115,7 +115,7 @@ BaseTypes	基底型別群	屬性
 CatchExceptionType	捕捉例外型別	屬性
 Clear	清除	方法
 Column	欄	屬性
-Comment	註解	屬性
+Comment	備註	屬性
 Condition	條件	屬性
 ContinueOnNewLine	繼續於新行	方法
 CoreAssemblyFileName	核心組件檔案名稱	屬性
@@ -138,7 +138,7 @@ GenerateArrayCreateExpression	產生陣列建立運算式	方法
 GenerateBaseReferenceExpression	產生基底引用運算式	方法
 GenerateBinaryOperatorExpression	產生二進位運算子運算式	方法
 GenerateCastExpression	產生轉型運算式	方法
-GenerateComment	產生註解	方法
+GenerateComment	產生備註	方法
 GenerateCompileUnit	產生編譯單位	方法
 GenerateCompileUnitEnd	產生編譯單位結尾	方法
 GenerateCompileUnitStart	產生編譯單位啟動	方法
@@ -169,7 +169,7 @@ GeneratePropertySetValueReferenceExpression	產生屬性設定值引用運算式
 GenerateSingleFloatValue	產生單一浮點數值	方法
 GenerateTypeConstructor	產生型別建構函式	方法
 GenerateTypeEnd	產生型別結尾	方法
-GenerateTypeOfExpression	產生型別之運算式	方法
+GenerateTypeOfExpression	產生型別所屬運算式	方法
 GenerateTypeReferenceExpression	產生型別引用運算式	方法
 GenerateTypeStart	產生型別啟動	方法
 GenerateTypes	產生型別群	方法

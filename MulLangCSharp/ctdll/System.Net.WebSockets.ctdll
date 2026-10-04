@@ -6,7 +6,7 @@ Net	網路	命名空間
 System	系統	命名空間
 IO	輸入輸出	命名空間
 Threading	執行緒	命名空間
-EndOfMessage	結尾之訊息	屬性
+EndOfMessage	結尾所屬訊息	屬性
 SendAsync	傳送非同步	方法
 CloseStatus	關閉狀況	屬性
 CloseStatusDescription	關閉狀況描述	屬性

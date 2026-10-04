@@ -71,8 +71,6 @@ Compile	編譯	方法
 DataType	資料型別	屬性
 ElementName	元素名稱	屬性
 GetObjectData	取得物件資料	方法
-InsertAfter	插入之後	方法
-InsertBefore	插入之前	方法
 Items	項目群	屬性
 LookupNamespace	查閱命名空間	方法
 ToDouble	轉雙精度	方法
@@ -174,7 +172,7 @@ Version	版本	屬性
 WriteAttributeString	寫特性字串	方法
 WriteBase64	寫基底64	方法
 WriteChars	寫字元群	方法
-WriteComment	寫註解	方法
+WriteComment	寫備註	方法
 WriteEndAttribute	寫結尾特性	方法
 WriteEndDocument	寫結尾文件	方法
 WriteFullEndElement	寫完整結尾元素	方法
@@ -300,7 +298,7 @@ Concat	串接	方法
 ContentModel	內容模型	屬性
 CreateAbstractTypeException	建立抽象型別例外	方法
 CreateAttributes	建立特性群	方法
-CreateComment	建立註解	方法
+CreateComment	建立備註	方法
 CreateDefaultAttribute	建立預設特性	方法
 CreateDocument	建立文件	方法
 CreateDocumentType	建立文件型別	方法
@@ -366,10 +364,10 @@ GetExtensionObject	取得擴充物件	方法
 GetGlobalValue	取得全域值	方法
 GetNameFilter	取得名稱篩選器	方法
 GetNamespace	取得命名空間	方法
-GetNamespaceOfPrefix	取得命名空間之前置詞	方法
+GetNamespaceOfPrefix	取得命名空間所屬前置詞	方法
 GetNode	取得節點	方法
 GetParameter	取得參數	方法
-GetPrefixOfNamespace	取得前置詞之命名空間	方法
+GetPrefixOfNamespace	取得前置詞所屬命名空間	方法
 GetResult	取得結果	方法
 GetTarget	取得目標	方法
 GetTypeFilter	取得型別篩選器	方法
@@ -379,8 +377,6 @@ GlobalTypes	全域型別群	屬性
 HasChildren	有子項群	屬性
 HasNamespace	有命名空間	方法
 InsertData	插入資料	方法
-InsertElementAfter	插入元素之後	方法
-InsertElementBefore	插入元素之前	方法
 InstanceNamespace	執行個體命名空間	常數
 Invoke	叫用	方法
 IsAny	是否任何	屬性
@@ -497,8 +493,6 @@ Specified	指定	屬性
 SplitText	分割文字	方法
 StartCopy	啟動複製	方法
 StartsWith	開頭為	方法
-SubstringAfter	子字串之後	方法
-SubstringBefore	子字串之前	方法
 SystemProperty	系統屬性	方法
 Target	目標	屬性
 TargetNamespace	目標命名空間	屬性
@@ -520,7 +514,7 @@ ToTimeOnlyIgnoreOffset	轉時間僅忽略位移	方法
 ToTimeSpan	轉時間跨度	方法
 TopLevelElement	頂端層級元素	方法
 Use	使用	屬性
-ValidateEndOfAttributes	驗證結尾之特性群	方法
+ValidateEndOfAttributes	驗證結尾所屬特性群	方法
 Values	值群	屬性
 VariableType	變數型別	屬性
 WriteAttributeStringAsync	寫特性字串非同步	方法
@@ -528,11 +522,11 @@ WriteAttributes	寫特性群	方法
 WriteAttributesAsync	寫特性群非同步	方法
 WriteBase64Async	寫基底64非同步	方法
 WriteCharsAsync	寫字元群非同步	方法
-WriteCommentAsync	寫註解非同步	方法
-WriteCommentString	寫註解字串	方法
+WriteCommentAsync	寫備註非同步	方法
+WriteCommentString	寫備註字串	方法
 WriteElementStringAsync	寫元素字串非同步	方法
 WriteEndAttributeAsync	寫結尾特性非同步	方法
-WriteEndComment	寫結尾註解	方法
+WriteEndComment	寫結尾備註	方法
 WriteEndDocumentAsync	寫結尾文件非同步	方法
 WriteEndDocumentOnClose	寫結尾文件於關閉	屬性
 WriteEndElementAsync	寫結尾元素非同步	方法
@@ -545,7 +539,7 @@ WriteNameAsync	寫名稱非同步	方法
 WriteNamespaceString	寫命名空間字串	方法
 WriteStartAttributeAsync	寫啟動特性非同步	方法
 WriteStartAttributeLocalName	寫啟動特性本機名稱	方法
-WriteStartComment	寫啟動註解	方法
+WriteStartComment	寫啟動備註	方法
 WriteStartElementAsync	寫啟動元素非同步	方法
 WriteStartElementLocalName	寫啟動元素本機名稱	方法
 WriteStartNamespace	寫啟動命名空間	方法
@@ -555,7 +549,7 @@ None	無	列舉值
 All	全部	列舉值
 Attribute	特性	列舉值
 Error	錯誤	列舉值
-Comment	註解	列舉值
+Comment	備註	列舉值
 Local	本機	列舉值
 Auto	自動	列舉值
 Boolean	布林值	列舉值
@@ -564,11 +558,9 @@ List	清單	列舉值
 Number	數值	列舉值
 String	字串	列舉值
 Union	聯集	列舉值
-After	之後	列舉值
 AnyUri	任何統一資源識別碼	列舉值
 Ascending	升冪	列舉值
 Base64Binary	基底64二進位	列舉值
-Before	之前	列舉值
 Byte	位元組	列舉值
 Date	日期	列舉值
 DateTime	日期時間	列舉值
@@ -579,7 +571,7 @@ Double	雙精度	列舉值
 Duration	持續時間	列舉值
 ElementOnly	元素僅	列舉值
 EndElement	結尾元素	列舉值
-EndOfFile	結尾之檔案	列舉值
+EndOfFile	結尾所屬檔案	列舉值
 Extension	擴充	列舉值
 Float	浮點數	列舉值
 GenerateNewAsync	產生新非同步	列舉值

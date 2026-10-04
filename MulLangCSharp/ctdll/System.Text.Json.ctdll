@@ -52,7 +52,7 @@ Skip	略過	方法
 TryGetProperty	嘗試取得屬性	方法
 ValueEquals	值相等	方法
 ValueTextEquals	值文字相等	方法
-WriteCommentValue	寫註解值	方法
+WriteCommentValue	寫備註值	方法
 AttributeProvider	特性提供者	屬性
 Clear	清除	方法
 Combine	結合	方法
@@ -161,7 +161,7 @@ FlushAsync	排清非同步	方法
 Get	取得	屬性
 GetArrayLength	取得陣列長度	方法
 GetAt	取得位於	方法
-GetComment	取得註解	方法
+GetComment	取得備註	方法
 GetConverter	取得轉換器	方法
 GetElementIndex	取得元素索引	方法
 GetEnumConverter	取得列舉轉換器	方法
@@ -245,7 +245,7 @@ String	字串	列舉值
 True	真	列舉值
 Allow	允許	列舉值
 Array	陣列	列舉值
-Comment	註解	列舉值
+Comment	備註	列舉值
 Dictionary	字典	列舉值
 EndArray	結尾陣列	列舉值
 EndObject	結尾物件	列舉值

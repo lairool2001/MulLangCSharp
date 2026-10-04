@@ -176,7 +176,7 @@ RuntimeIdProperty	執行階段識別碼屬性	欄位
 SetCurrentView	設定目前檢視	方法
 SetFocus	設定焦點	方法
 SetWindowVisualState	設定視窗視覺狀態	方法
-SizeOfSetProperty	大小之設定屬性	欄位
+SizeOfSetProperty	大小所屬設定屬性	欄位
 SyncRoot	同步根	屬性
 TrueCondition	真條件	欄位
 TryGetCurrentPattern	嘗試取得目前樣式	方法

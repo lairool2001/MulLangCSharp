@@ -19,4 +19,4 @@ GetGenericArguments	取得泛型引數群	方法
 GetModuleVersionId	取得模組版本識別碼	方法
 GetTypes	取得型別群	方法
 HasModuleVersionId	有模組版本識別碼	方法
-IsInstanceOfType	是否執行個體之型別	方法
+IsInstanceOfType	是否執行個體所屬型別	方法

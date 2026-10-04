@@ -143,7 +143,7 @@ BaseClass	基底類別	屬性
 BaseClear	基底清除	方法
 BaseGetAllKeys	基底取得全部鍵群	方法
 BaseGetKey	基底取得鍵	方法
-BaseIndexOf	基底索引之	方法
+BaseIndexOf	基底索引所屬	方法
 BaseIsRemoved	基底是否已移除	方法
 BaseRemove	基底移除	方法
 BaseRemoveAt	基底移除位於	方法
@@ -153,7 +153,7 @@ CanConvertTo	可以轉換轉	方法
 ClearElementName	清除元素名稱	屬性
 ClearItemsName	清除項目群名稱	屬性
 CreateAttribute	建立特性	方法
-CreateComment	建立註解	方法
+CreateComment	建立備註	方法
 CreateElement	建立元素	方法
 CreateTextNode	建立文字節點	方法
 CurrentConfiguration	目前組態	屬性

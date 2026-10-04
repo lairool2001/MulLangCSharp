@@ -163,7 +163,7 @@ StringKeyFrame	字串鍵框架	類別
 StringKeyFrameCollection	字串鍵框架集合物件	類別
 TextBounds	文字邊界	類別
 TextDataFormat	文字資料格式化	列舉
-TextEndOfLine	文字結尾之行	類別
+TextEndOfLine	文字結尾所屬行	類別
 TextFormatter	文字格式器	類別
 TextHidden	文字隱藏	類別
 TextLine	文字行	類別
@@ -294,7 +294,7 @@ GetItemStatusCore	取得項目狀況核心	方法
 GetItemTypeCore	取得項目型別核心	方法
 GetPattern	取得樣式	方法
 GetPositionInSetCore	取得位置在設定核心	方法
-GetSizeOfSetCore	取得大小之設定核心	方法
+GetSizeOfSetCore	取得大小所屬設定核心	方法
 GetText	取得文字	方法
 IsContentElementCore	是否內容元素核心	方法
 IsControlElementCore	是否控制項元素核心	方法
@@ -478,7 +478,7 @@ GetName	取得名稱	方法
 GetPageAsync	取得頁面非同步	方法
 GetPageNumberAsync	取得頁面數值非同步	方法
 GetPositionInSet	取得位置在設定	方法
-GetSizeOfSet	取得大小之設定	方法
+GetSizeOfSet	取得大小所屬設定	方法
 GetStandardValuesSupported	取得標準值群已支援	方法
 GetVisualChild	取得視覺子項	方法
 Gray	灰色	屬性
@@ -599,8 +599,6 @@ BlackBoxHeight	黑色方塊高度	屬性
 BlackBoxWidth	黑色方塊寬度	屬性
 BlackWhite	黑色白色	屬性
 Bold	粗體	屬性
-BreakAfter	中斷之後	屬性
-BreakBefore	中斷之前	屬性
 ButtonState	按鈕狀態	屬性
 CacheOption	快取選項	屬性
 CacheOptionProperty	快取選項屬性	欄位
@@ -617,7 +615,7 @@ ClickCount	按一下數量	屬性
 CommandParameterProperty	命令參數屬性	欄位
 CommandProperty	命令屬性	欄位
 CommandTargetProperty	命令目標屬性	欄位
-Comment	註解	屬性
+Comment	備註	屬性
 ConnectionGroupName	連線物件群組名稱	屬性
 ContainsData	包含資料	方法
 ContainsQuery	包含查詢	方法
@@ -660,8 +658,8 @@ EnableClearTypeProperty	啟用清除型別屬性	欄位
 ErrorException	錯誤例外	屬性
 EventsSource	事件群來源	屬性
 Execute	運行	方法
-FieldOfView	欄位之檢視	屬性
-FieldOfViewProperty	欄位之檢視屬性	欄位
+FieldOfView	欄位所屬檢視	屬性
+FieldOfViewProperty	欄位所屬檢視屬性	欄位
 Find	尋找	屬性
 FirstCharacterIndex	第一個字符索引	屬性
 FirstPage	第一個頁面	屬性
@@ -956,13 +954,13 @@ SetPropertyValue	設定屬性值	方法
 SetQuery	設定查詢	方法
 SetRestoreInputLanguage	設定還原輸入語言	方法
 SetRootDpi	設定根解析度	方法
-SetSizeOfSet	設定大小之設定	方法
+SetSizeOfSet	設定大小所屬設定	方法
 SetStreamSource	設定資料流來源	方法
 SetValue	設定值	方法
 SetVisual	設定視覺	方法
 ShouldSerializeInput	應該序列化輸入	方法
 ShouldSerializeTransform	應該序列化變換	方法
-SizeOfSetProperty	大小之設定屬性	欄位
+SizeOfSetProperty	大小所屬設定屬性	欄位
 SizeProperty	大小屬性	欄位
 SkipToFill	略過轉填入	方法
 Solid	實心	屬性

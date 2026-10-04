@@ -1,9 +1,4 @@
-﻿namespace MulLangCSharp;
-
-internal static class Samples
-{
-    public const string HelloWorld = """
-註解 中文 C# 範例程式
+﻿註解 中文 C# 範例程式
 註解 F5 開始偵錯｜F9 切換中斷點（或點左側邊界）｜F10 不進入函式｜F11 逐步執行｜Ctrl+F5 直接執行
 註解 「的」等同於「.」、「之」代表空白、「接著」代表「;」（行尾的「;」可省略）、「呼叫」代表「()」、「註解」開始一行註解，其他關鍵字請見「說明 → 關鍵字對照表」
 使用之系統
@@ -28,6 +23,9 @@ internal static class Samples
 
     類別之程式
     ｛
+        靜態之虛無之哈哈哈呼叫
+        ｛
+        ｝
         靜態之虛無之主程式（字串［］ 參數）
         ｛
             主控台的寫行（＂你好，世界！＂）
@@ -73,6 +71,3 @@ internal static class Samples
         ｝
     ｝
 ｝
-
-""";
-}

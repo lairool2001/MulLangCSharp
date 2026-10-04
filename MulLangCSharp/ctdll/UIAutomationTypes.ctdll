@@ -110,7 +110,7 @@ RowSpanProperty	列跨度屬性	欄位
 RuntimeIdProperty	執行階段識別碼屬性	欄位
 Select	投影	方法
 Separator	分隔符號	欄位
-SizeOfSetProperty	大小之設定屬性	欄位
+SizeOfSetProperty	大小所屬設定屬性	欄位
 SplitButton	分割按鈕	欄位
 Tab	索引標籤	欄位
 TabItem	索引標籤項目	欄位

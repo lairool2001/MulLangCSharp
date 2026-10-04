@@ -44,7 +44,7 @@ Refresh	重新整理	方法
 Name	名稱	屬性
 Add	新增	方法
 BeepEnabled	嗶聲已啟用	屬性
-Comment	註解	屬性
+Comment	備註	屬性
 DefaultPortThreadPriority	預設連接埠執行緒物件優先順序	屬性
 DefaultSchedulerPriority	預設排程器優先順序	屬性
 Description	描述	屬性
@@ -53,8 +53,8 @@ Location	座標	屬性
 PortThreadPriority	連接埠執行緒物件優先順序	屬性
 Priority	優先順序	屬性
 SchedulerPriority	排程器優先順序	屬性
-StartTimeOfDay	啟動時間之日	屬性
-UntilTimeOfDay	直到時間之日	屬性
+StartTimeOfDay	啟動時間所屬日	屬性
+UntilTimeOfDay	直到時間所屬日	屬性
 Cancel	取消	方法
 CancelAsync	取消非同步	方法
 ConnectToPrintQueue	連線轉列印佇列	方法
@@ -89,7 +89,7 @@ IsCompleted	是否已完成	屬性
 IsHidden	是否隱藏	屬性
 IsIOActive	是否輸入輸出作用中	屬性
 IsNotAvailable	是否不可用	屬性
-IsOutOfMemory	是否輸出之記憶體	屬性
+IsOutOfMemory	是否輸出所屬記憶體	屬性
 IsPowerSaveOn	是否冪儲存於	屬性
 IsRawOnlyEnabled	是否原始僅已啟用	屬性
 IsServerUnknown	是否伺服器未知	屬性
@@ -119,6 +119,6 @@ Local	本機	列舉值
 Maximum	最大限度	列舉值
 Minimum	最小限度	列舉值
 NotAvailable	不可用	列舉值
-OutOfMemory	輸出之記憶體	列舉值
+OutOfMemory	輸出所屬記憶體	列舉值
 PowerSave	冪儲存	列舉值
 ServerUnknown	伺服器未知	列舉值

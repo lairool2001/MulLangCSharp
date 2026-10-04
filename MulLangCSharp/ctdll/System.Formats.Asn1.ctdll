@@ -7,7 +7,7 @@ Security	安全性	命名空間
 Scope	作用域	結構
 Encode	編碼	方法
 WriteInteger	寫整數值	方法
-ReadSetOf	讀取設定之	方法
+ReadSetOf	讀取設定所屬	方法
 ReadUtcTime	讀取世界標準時間時間	方法
 Boolean	布林值	欄位
 Equals	相等	方法
@@ -24,7 +24,7 @@ ReadObjectIdentifier	讀取物件識別項	方法
 ReadSequence	讀取序列	方法
 RuleSet	規則設定	屬性
 Sequence	序列	欄位
-SetOf	設定之	欄位
+SetOf	設定所屬	欄位
 TryEncode	嘗試編碼	方法
 TryReadBitString	嘗試讀取位元字串	方法
 TryReadCharacterString	嘗試讀取字符字串	方法
@@ -45,9 +45,9 @@ HasData	有資料	屬性
 HasSameClassAndValue	有相同類別與值	方法
 PeekContentBytes	查看內容位元組群	方法
 PopSequence	彈出序列	方法
-PopSetOf	彈出設定之	方法
+PopSetOf	彈出設定所屬	方法
 PushSequence	推入序列	方法
-PushSetOf	推入設定之	方法
+PushSetOf	推入設定所屬	方法
 Reset	重設	方法
 ThrowIfNotEmpty	拋出若不空白	方法
 ToString	轉字串	方法
@@ -61,12 +61,12 @@ BitString	位元字串	列舉值
 Date	日期	列舉值
 DateTime	日期時間	列舉值
 Duration	持續時間	列舉值
-InstanceOf	執行個體之	列舉值
+InstanceOf	執行個體所屬	列舉值
 NumericString	數值型字串	列舉值
 Private	私有	列舉值
 Real	實數	列舉值
-SequenceOf	序列之	列舉值
+SequenceOf	序列所屬	列舉值
 Set	設定	列舉值
 Time	時間	列舉值
-TimeOfDay	時間之日	列舉值
+TimeOfDay	時間所屬日	列舉值
 VisibleString	可見字串	列舉值

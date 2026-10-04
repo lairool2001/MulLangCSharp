@@ -27,9 +27,20 @@ public static class ChineseHighlighting
             .Select(e => Regex.Escape(e.Chinese))
             .OrderByDescending(w => w.Length));
 
-        // 「的」不視為識別字字元，因此「主控台的寫行」中的「主控台」與「寫行」都能各自上色。
+        // 詞的邊界：非識別字字元，或「的」「之」，或黏著寫的運算子（被指派、加上、加一、非…），
+        // 因此「主控台的寫行」「使用之系統」「暫停中被指派假」中的每個詞都能各自上色。
+        string glued = string.Join("|", KeywordDictionary.EmbeddableOperators
+            .Concat(KeywordDictionary.AffixOperators).Concat(KeywordDictionary.PrefixOperators)
+            .OrderByDescending(w => w.Length).Select(Regex.Escape));
+        string separators = $"[{KeywordDictionary.MemberAccessChar}{KeywordDictionary.SpaceChar}]|{glued}";
+        string before = $@"(?<=^|[^\w]|{separators})";
+        string after = $@"(?=$|[^\w]|{separators})";
+
         string Rule(string color, string words) => words.Length == 0 ? "" :
-            $"<Rule color=\"{color}\">{SecurityElement.Escape($@"(?<![\w-[的]])(?:{words})(?![\w-[的]])")}</Rule>";
+            $"<Rule color=\"{color}\">{SecurityElement.Escape($"{before}(?:{words}){after}")}</Rule>";
+
+        string numberRule = SecurityElement.Escape(
+            $@"{before}(?:0[xX][0-9a-fA-F_]+|0[bB][01_]+|\d[\d_]*(\.\d+)?([eE][+-]?\d+)?[fFdDmMuUlL]*)");
 
         var xshd = $$"""
             <SyntaxDefinition name="中文C#" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
@@ -42,17 +53,26 @@ public static class ChineseHighlighting
               <Color name="Library" foreground="#795E26" />
               <Color name="Number" foreground="#098658" />
               <Color name="Member" foreground="#C800C8" fontWeight="bold" />
+              <Color name="Separator" foreground="#B0B0B0" />
               <Color name="Preprocessor" foreground="#808080" />
               <RuleSet>
-                <Span color="Comment" begin="//" />
-                <Span color="Comment" multiline="true" begin="/\*" end="\*/" />
+                <Span color="Comment" multiline="true" begin="/\*|／＊|開始註解" end="\*/|＊／|結束註解" />
+                <Span color="Comment" begin="//|／／|註解" />
                 <Span color="Preprocessor" begin="^\s*\#" />
                 <Span color="String" multiline="true">
-                  <Begin>\$?@\$?"</Begin><End>"</End>
+                  <Begin>[\$＄]?@[\$＄]?"</Begin><End>"</End>
                   <RuleSet><Span begin='""' end="" /></RuleSet>
                 </Span>
                 <Span color="String">
-                  <Begin>\$?"</Begin><End>"</End>
+                  <Begin>[\$＄]?"</Begin><End>"</End>
+                  <RuleSet><Span begin="\\" end="." /></RuleSet>
+                </Span>
+                <Span color="String" multiline="true">
+                  <Begin>[\$＄]?@[\$＄]?＂</Begin><End>＂</End>
+                  <RuleSet><Span begin="＂＂" end="" /></RuleSet>
+                </Span>
+                <Span color="String">
+                  <Begin>[\$＄]?＂</Begin><End>＂</End>
                   <RuleSet><Span begin="\\" end="." /></RuleSet>
                 </Span>
                 <Span color="String">
@@ -65,18 +85,19 @@ public static class ChineseHighlighting
                 {{Rule("Operator", Words(WordCategory.運算子))}}
                 {{EmbeddedOperatorRules()}}
                 <Rule color="Member">的</Rule>
-                <Rule color="Number">\b0[xX][0-9a-fA-F_]+|\b0[bB][01_]+|\b\d[\d_]*(\.\d+)?([eE][+-]?\d+)?[fFdDmMuUlL]*</Rule>
+                <Rule color="Separator">之</Rule>
+                <Rule color="Number">{{numberRule}}</Rule>
               </RuleSet>
             </SyntaxDefinition>
             """;
         // 可嵌入的運算子（x被指派1）在任何位置都上色；加一／減一只在詞首或詞尾（加一c、c加一）上色。
         static string EmbeddedOperatorRules()
         {
-            string embed = string.Join("|", KeywordDictionary.EmbeddableOperators.Select(Regex.Escape));
+            string embed = string.Join("|", KeywordDictionary.EmbeddableOperators.OrderByDescending(w => w.Length).Select(Regex.Escape));
             string affix = string.Join("|", KeywordDictionary.AffixOperators.Select(Regex.Escape));
-            string affixRegex = $@"(?<![\w-[的]])(?:{affix})|(?:{affix})(?![\w-[的]])";
+            string affixRegex = $@"(?<![\w-[的之]])(?:{affix})|(?:{affix})(?![\w-[的之]])";
             string prefix = string.Join("|", KeywordDictionary.PrefixOperators.Select(Regex.Escape));
-            string prefixRegex = $@"(?<![\w-[的]])(?:{prefix})(?=[\w-[的]])";
+            string prefixRegex = $@"(?<![\w-[的之]])(?:{prefix})(?=[\w-[的之]])";
             return $"<Rule color=\"Operator\">{SecurityElement.Escape(embed)}</Rule>\n" +
                    $"<Rule color=\"Operator\">{SecurityElement.Escape(prefixRegex)}</Rule>\n" +
                    $"<Rule color=\"Operator\">{SecurityElement.Escape(affixRegex)}</Rule>";
@@ -97,6 +118,38 @@ public sealed class LibraryColorizer : DocumentColorizingTransformer
 
     private static Brush Freeze(Brush b) { b.Freeze(); return b; }
 
+    /// <summary>
+    /// 為一段不含「的」「之」的詞上色：整段是函式庫名稱就上色；否則依黏著寫的運算子
+    /// （被指派、加上…、前後的加一／減一、前置的非）切開後再分別判斷，與轉換器的切法一致。
+    /// </summary>
+    private void ColorPiece(string text, int start, int end, int lineOffset)
+    {
+        if (end <= start) return;
+        var piece = text.Substring(start, end - start);
+        if (KeywordDictionary.IsLibraryWord(piece))
+        {
+            ChangeLinePart(lineOffset + start, lineOffset + end, el => el.TextRunProperties.SetForegroundBrush(LibraryBrush));
+            return;
+        }
+        if (KeywordDictionary.ChineseToCSharp.ContainsKey(piece)) return; // 其他關鍵字由語法規則上色
+
+        foreach (var op in KeywordDictionary.EmbeddableOperators)
+        {
+            int p = piece.IndexOf(op, StringComparison.Ordinal);
+            if (p < 0) continue;
+            ColorPiece(text, start, start + p, lineOffset);
+            ColorPiece(text, start + p + op.Length, end, lineOffset);
+            return;
+        }
+        foreach (var op in KeywordDictionary.AffixOperators)
+        {
+            if (piece.Length > op.Length && piece.StartsWith(op, StringComparison.Ordinal)) { ColorPiece(text, start + op.Length, end, lineOffset); return; }
+            if (piece.Length > op.Length && piece.EndsWith(op, StringComparison.Ordinal)) { ColorPiece(text, start, end - op.Length, lineOffset); return; }
+        }
+        foreach (var op in KeywordDictionary.PrefixOperators)
+            if (piece.Length > op.Length && piece.StartsWith(op, StringComparison.Ordinal)) { ColorPiece(text, start + op.Length, end, lineOffset); return; }
+    }
+
     protected override void ColorizeLine(DocumentLine line)
     {
         var text = CurrentContext.Document.GetText(line);
@@ -104,8 +157,8 @@ public sealed class LibraryColorizer : DocumentColorizingTransformer
         while (i < text.Length)
         {
             char c = text[i];
-            if (c == '/' && i + 1 < text.Length && text[i + 1] == '/') return;
-            if (c is '"' or '\'')
+            if (c is '/' or '／' && i + 1 < text.Length && text[i + 1] is '/' or '／') return;
+            if (c is '"' or '\'' or '＂')
             {
                 int j = i + 1;
                 while (j < text.Length && text[j] != c) j += text[j] == '\\' ? 2 : 1;
@@ -122,16 +175,19 @@ public sealed class LibraryColorizer : DocumentColorizingTransformer
 
             int end = i;
             while (end < text.Length && Translator.IsIdentPart(text[end])) end++;
+            // 「註解」「開始註解」：之後是註解，不再上色（與轉換器相同的切法）。
+            int commentAt = text.IndexOf("註解", i, end - i, StringComparison.Ordinal);
+            if (commentAt >= 0) end = commentAt >= i + 2 && text.Substring(commentAt - 2, 2) == "開始" ? commentAt - 2 : commentAt;
             int pieceStart = i;
             for (int k = i; k <= end; k++)
             {
-                if (k == end || text[k] == KeywordDictionary.MemberAccessChar)
+                if (k == end || text[k] is KeywordDictionary.MemberAccessChar or KeywordDictionary.SpaceChar)
                 {
-                    if (k > pieceStart && KeywordDictionary.IsLibraryWord(text.Substring(pieceStart, k - pieceStart)))
-                        ChangeLinePart(line.Offset + pieceStart, line.Offset + k, el => el.TextRunProperties.SetForegroundBrush(LibraryBrush));
+                    if (k > pieceStart) ColorPiece(text, pieceStart, k, line.Offset);
                     pieceStart = k + 1;
                 }
             }
+            if (commentAt >= 0) return;
             i = end;
         }
     }

@@ -35,7 +35,7 @@ GetPropertyAsByteArray	取得屬性為位元組陣列	方法
 GetPropertyAsDouble	取得屬性為雙精度	方法
 GetPropertyAsInt32	取得屬性為整數32	方法
 GetPropertyAsString	取得屬性為字串	方法
-GetTypeOfProperty	取得型別之屬性	方法
+GetTypeOfProperty	取得型別所屬屬性	方法
 HasProperty	有屬性	方法
 Initialize	初始化	方法
 Int16	整數16	屬性

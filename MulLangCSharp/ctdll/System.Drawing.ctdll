@@ -4,5 +4,6 @@
 # 內建關鍵字字典優先；中文名稱不可含「的」「被指派」「加上」「減掉」，否則該行會被略過。
 Configuration	組態	命名空間
 Drawing	繪圖	命名空間
+Drawing2D	繪圖2D	命名空間
 System	系統	命名空間
 Text	文字	命名空間

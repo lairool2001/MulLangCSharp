@@ -26,7 +26,7 @@ BeginWrite	開始寫	方法
 CanRead	可以讀取	屬性
 CanSeek	可以定位	屬性
 CanWrite	可以寫	屬性
-DisposeLocalCopyOfClientHandle	處置本機複製之用戶端控制代碼	方法
+DisposeLocalCopyOfClientHandle	處置本機複製所屬用戶端控制代碼	方法
 EndInvoke	結尾叫用	方法
 EndRead	結尾讀取	方法
 EndWaitForConnection	結尾等候給連線物件	方法

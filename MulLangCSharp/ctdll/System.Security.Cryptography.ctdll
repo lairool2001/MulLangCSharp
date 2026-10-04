@@ -173,8 +173,6 @@ MaxKeys	最大鍵群	屬性
 MaxSize	最大大小	屬性
 MinSize	最小大小	屬性
 ModeValue	模式值	欄位
-NotAfter	不之後	屬性
-NotBefore	不之前	屬性
 OnValidate	於驗證	方法
 OpenKeyFromProvider	開啟鍵從提供者	方法
 Options	選項群	屬性

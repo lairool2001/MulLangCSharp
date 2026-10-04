@@ -160,7 +160,7 @@ SelectWrite	選取寫	列舉值
 SendBuffer	傳送緩衝區	列舉值
 Stream	資料流	列舉值
 Type	型別	列舉值
-TypeOfService	型別之服務	列舉值
+TypeOfService	型別所屬服務	列舉值
 UpdateAcceptContext	更新接受內容環境	列舉值
 UpdateConnectContext	更新連線內容環境	列舉值
 UseDefaultWorkerThread	使用預設背景工作執行緒物件	列舉值

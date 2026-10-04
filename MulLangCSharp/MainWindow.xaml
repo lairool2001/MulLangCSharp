@@ -102,6 +102,14 @@
                 <Button x:Name="BtnStepOut" Style="{StaticResource ToolButton}" Click="StepOut_Click" ToolTip="跳離函式 (Shift+F11)">↑ 跳離函式</Button>
                 <Separator />
                 <Button Style="{StaticResource ToolButton}" Click="ToggleBreakpoint_Click" ToolTip="切換中斷點 (F9)">● 中斷點</Button>
+                <Separator />
+                <Button Style="{StaticResource ToolButton}" Click="FormatDocument_Click" ToolTip="格式化文件 (Ctrl+E, D)">✨ 格式化</Button>
+                <ToggleButton x:Name="BtnGlue" Padding="8,3" Margin="1,0" Focusable="False" IsChecked="True"
+                              Checked="GlueToggle_Changed" Unchecked="GlueToggle_Changed"
+                              ToolTip="開啟：格式化時把 被指派、加上、減掉、而且、或是、非 黏著寫（c被指派0）&#x0a;關閉：一律加上標準空白（c 被指派 0）">🔗 黏著寫</ToggleButton>
+                <ToggleButton x:Name="BtnHalfWidth" Padding="8,3" Margin="1,0" Focusable="False" IsChecked="False"
+                              Checked="HalfWidthToggle_Changed" Unchecked="HalfWidthToggle_Changed"
+                              ToolTip="開啟：打字時把全形符號（（）｛｝［］，＜＞＄＂）自動換成半形&#x0a;關閉：全形與半形互通，打什麼就保留什麼">半形輸入</ToggleButton>
             </ToolBar>
         </ToolBarTray>
 

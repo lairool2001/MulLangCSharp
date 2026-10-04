@@ -38,8 +38,8 @@ Any	任何	欄位
 BaseAddress	基底位址	屬性
 Buffer	緩衝區	屬性
 Capacity	容量	屬性
-Comment	註解	屬性
-CommentUri	註解統一資源識別碼	屬性
+Comment	備註	屬性
+CommentUri	備註統一資源識別碼	屬性
 ErrorCode	錯誤程式碼	屬性
 GetAddressBytes	取得位址位元組群	方法
 GetMaximumAddressSize	取得最大限度位址大小	方法

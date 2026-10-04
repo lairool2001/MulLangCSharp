@@ -34,7 +34,7 @@ Clear	清除	方法
 Contains	包含	方法
 CopyTo	複製轉	方法
 CreateRange	建立範圍	方法
-LastIndexOf	最後一個索引之	方法
+LastIndexOf	最後一個索引所屬	方法
 Add	新增	方法
 GetEnumerator	取得列舉器	方法
 Sort	排序	方法
@@ -138,7 +138,7 @@ IsDefaultOrEmpty	是否預設或空白	屬性
 Items	項目群	屬性
 Length	長度	屬性
 MoveToImmutable	移動轉不可變	方法
-OfType	之型別	方法
+OfType	所屬型別	方法
 Select	投影	方法
 Set	設定	屬性
 Slice	切片	方法

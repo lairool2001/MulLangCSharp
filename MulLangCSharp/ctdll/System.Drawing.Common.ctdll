@@ -7,6 +7,7 @@ System	系統	命名空間
 Drawing	繪圖	命名空間
 Text	文字	命名空間
 Common	通用	命名空間
+Drawing2D	繪圖2D	命名空間
 Internal	內部	命名空間
 Storage	儲存體	命名空間
 Windows	視窗群	命名空間
@@ -262,7 +263,7 @@ MessageBoxFont	訊息方塊字型	屬性
 MinimumPage	最小限度頁面	屬性
 NewColor	新色彩	屬性
 NextPathType	下一個路徑型別	方法
-NumberOfValues	數值之值群	屬性
+NumberOfValues	數值所屬值群	屬性
 OldColor	舊色彩	屬性
 OnBeginPrint	於開始列印	方法
 OnPrintPage	於列印頁面	方法
@@ -332,7 +333,7 @@ BottomRight	底部右	列舉值
 Character	字符	列舉值
 Clamp	限制範圍	列舉值
 ColorSpaceGray	色彩空格灰色	列舉值
-Comment	註解	列舉值
+Comment	備註	列舉值
 CurrentPage	目前頁面	列舉值
 Dash	虛線	列舉值
 DashMode	虛線模式	列舉值
@@ -346,7 +347,7 @@ Drive525	磁碟機525	列舉值
 DriveFixed	磁碟機固定	列舉值
 DriveNet	磁碟機網路	列舉值
 DriveUnknown	磁碟機未知	列舉值
-EndOfFile	結尾之檔案	列舉值
+EndOfFile	結尾所屬檔案	列舉值
 Far	遠	列舉值
 Find	尋找	列舉值
 FixedBlackAndWhite	固定黑色與白色	列舉值
@@ -415,4 +416,3 @@ ValueTypePointer	值型別指標	列舉值
 ValueTypeShort	值型別短整數	列舉值
 Word	單字	列舉值
 WriteOnly	寫僅	列舉值
-Drawing2D	繪圖2D	命名空間

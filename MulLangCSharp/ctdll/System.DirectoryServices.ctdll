@@ -25,9 +25,9 @@ DirectoryEntryConfiguration	目錄條目組態	類別
 DirectoryServerCollection	目錄伺服器集合物件	類別
 DirectorySynchronizationOptions	目錄同步處理選項群	列舉
 DirectoryVirtualListView	目錄虛擬清單檢視	類別
-HourOfDay	小時之日	列舉
+HourOfDay	小時所屬日	列舉
 ListChildrenAccessRule	清單子項群存取規則	類別
-MinuteOfHour	分鐘之小時	列舉
+MinuteOfHour	分鐘所屬小時	列舉
 PasswordEncodingMethod	密碼編碼方式方法	列舉
 PropertyAccess	屬性存取	列舉
 PropertyAccessRule	屬性存取規則	類別
@@ -99,10 +99,8 @@ Type	型別	屬性
 AccessRightType	存取右型別	屬性
 AccessRuleType	存取規則型別	屬性
 AddAccessRule	新增存取規則	方法
-AfterCount	之後數量	屬性
 AttributeNames	特性名稱群	屬性
 AttributeScopeQuery	特性作用域查詢	屬性
-BeforeCount	之前數量	屬性
 BeginInvoke	開始叫用	方法
 Clear	清除	方法
 ClientTimeout	用戶端逾時	屬性
@@ -160,7 +158,7 @@ SetAccessRule	設定存取規則	方法
 SetSecurityLevel	設定安全性層級	方法
 Sort	排序	屬性
 SourceName	來源名稱	屬性
-SubClassOf	子類別之	屬性
+SubClassOf	子類別所屬	屬性
 Target	目標	屬性
 TargetName	目標名稱	屬性
 TargetServer	目標伺服器	屬性

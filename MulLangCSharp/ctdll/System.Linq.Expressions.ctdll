@@ -9,7 +9,7 @@ Collections	集合	命名空間
 Generic	泛型	命名空間
 Runtime	執行階段	命名空間
 Expression	運算式	類別
-CallInfo	呼叫資訊	類別
+CallInfo	調用資訊	類別
 NewExpression	新運算式	類別
 SwitchCase	切換大小寫	類別
 BinaryExpression	二進位運算式	類別
@@ -30,7 +30,7 @@ LabelExpression	標籤運算式	類別
 LabelTarget	標籤目標	類別
 LoopExpression	迴圈運算式	類別
 MemberExpression	成員運算式	類別
-MethodCallExpression	方法呼叫運算式	類別
+MethodCallExpression	方法調用運算式	類別
 NewArrayExpression	新陣列運算式	類別
 ParameterExpression	參數運算式	類別
 ReadOnlyCollectionBuilder	讀取僅集合物件建構器	類別
@@ -44,7 +44,7 @@ Accept	接受	方法
 Type	型別	屬性
 NodeType	節點型別	屬性
 Bind	繫結	方法
-Call	呼叫	方法
+Call	調用	方法
 ReturnType	回傳型別	屬性
 Block	區塊	方法
 MakeDynamic	製作動態	方法

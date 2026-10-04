@@ -266,7 +266,7 @@ GetInstance	取得執行個體	方法
 GetList	取得清單	方法
 GetListName	取得清單名稱	方法
 GetOptionValue	取得選項值	方法
-GetPathOfAssembly	取得路徑之組件	方法
+GetPathOfAssembly	取得路徑所屬組件	方法
 GetReference	取得引用	方法
 GetResourceReader	取得資源讀取器	方法
 GetResourceWriter	取得資源寫入器	方法
@@ -393,7 +393,7 @@ ItemAdded	項目已新增	列舉值
 MouseDown	滑鼠下	列舉值
 MouseUp	滑鼠上	列舉值
 Normal	一般	列舉值
-PositionOutOfRange	位置輸出之範圍	列舉值
+PositionOutOfRange	位置輸出所屬範圍	列舉值
 Reset	重設	列舉值
 Runtime	執行階段	列舉值
 Select	投影	列舉值

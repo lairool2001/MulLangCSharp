@@ -20,6 +20,9 @@ public static class KeywordDictionary
     /// <summary>「的」→「.」，不受完整詞比對限制。</summary>
     public const char MemberAccessChar = '的';
 
+    /// <summary>「之」→ 空白（可用來代替空白分隔，例如「整數之c」= 「整數 c」）。</summary>
+    public const char SpaceChar = '之';
+
     public static readonly IReadOnlyList<WordEntry> Entries = new List<WordEntry>
     {
         // ── 關鍵字 ──
@@ -138,6 +141,11 @@ public static class KeywordDictionary
         new("或是", "||", WordCategory.運算子, "前後可不加空格"),
         new("非", "!", WordCategory.運算子, "可直接接在名稱前：非暫停中"),
         new("被指派", "=", WordCategory.運算子, "指派運算子（前後可不加空格）"),
+        new("接著", ";", WordCategory.運算子, "陳述式分隔（前後可不加空格；行尾的 ; 本來就可省略）"),
+        new("呼叫", "()", WordCategory.運算子, "空的括號，可黏著寫：主控台的讀行呼叫 = Console.ReadLine()"),
+        new("註解", "//", WordCategory.關鍵字, "單行註解：之後到行尾都是註解"),
+        new("開始註解", "/*", WordCategory.關鍵字, "區塊註解開始（可跨行），以「結束註解」結束"),
+        new("結束註解", "*/", WordCategory.關鍵字, "區塊註解結束"),
         new("加上", "+=", WordCategory.運算子, "前後可不加空格"),
         new("減掉", "-=", WordCategory.運算子, "前後可不加空格"),
         new("加一", "++", WordCategory.運算子, "可直接接在變數前後：加一c、c加一"),
@@ -156,7 +164,7 @@ public static class KeywordDictionary
     };
 
     /// <summary>可嵌在識別字之間、前後不需空格的運算子（例如「x被指派1」）。</summary>
-    public static readonly IReadOnlyList<string> EmbeddableOperators = new[] { "被指派", "加上", "減掉", "而且", "或是" };
+    public static readonly IReadOnlyList<string> EmbeddableOperators = new[] { "被指派", "加上", "減掉", "而且", "或是", "接著", "大於等於", "小於等於", "不等於", "大於", "小於", "等於", "呼叫" };
 
     /// <summary>可直接黏在變數前（前置）或後（後置）的運算子（例如「加一c」「c加一」）。</summary>
     public static readonly IReadOnlyList<string> AffixOperators = new[] { "加一", "減一" };
@@ -200,7 +208,7 @@ public static class KeywordDictionary
     public static bool IsUsableChineseName(string zh)
     {
         if (zh.Length == 0 || !Translator.IsIdentStart(zh[0]) || !zh.All(Translator.IsIdentPart)) return false;
-        if (!zh.Any(c => c > 127) || zh.Contains(MemberAccessChar)) return false;
+        if (!zh.Any(c => c > 127) || zh.Contains(MemberAccessChar) || zh.Contains(SpaceChar) || zh.Contains("註解")) return false;
         if (EmbeddableOperators.Any(op => zh.Contains(op, StringComparison.Ordinal))) return false;
         if (AffixOperators.Any(op => zh != op && (zh.StartsWith(op, StringComparison.Ordinal) || zh.EndsWith(op, StringComparison.Ordinal))))
             return false;

@@ -178,7 +178,6 @@ Modified	已修改	屬性
 MoveNext	移動下一個	方法
 NewItemTypes	新項目型別群	屬性
 Offset	位移	屬性
-OnAfterSelect	於之後選取	方法
 OnComponentRename	於元件重新命名	方法
 OnKeyPress	於鍵按下	方法
 OnNodeMouseClick	於節點滑鼠按一下	方法

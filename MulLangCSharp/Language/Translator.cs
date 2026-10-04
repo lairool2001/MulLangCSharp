@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using Microsoft.CodeAnalysis.CSharp;
 using System.Text;
 
 namespace MulLangCSharp.Language;
@@ -62,13 +63,66 @@ public sealed class TranslationResult
 /// </summary>
 public static class Translator
 {
-    public static TranslationResult ToCSharp(string source) => new ForwardScanner(source).Run();
+    public static TranslationResult ToCSharp(string source) => AutoSemicolons(new ForwardScanner(source).Run());
+
+    private static readonly Microsoft.CodeAnalysis.CSharp.CSharpParseOptions SemicolonParseOptions =
+        new(Microsoft.CodeAnalysis.CSharp.LanguageVersion.Latest);
+
+    /// <summary>
+    /// 行尾的「;」可以省略：用 Roslyn 解析轉換後的 C#，凡是缺少「;」且語句在此結束
+    /// （下一個語彙單元在下一行、是「}」或檔案結尾）的位置，自動補上「;」。
+    /// 補上的字元不含換行，因此行號不變；位置對照表一併更新。
+    /// </summary>
+    private static TranslationResult AutoSemicolons(TranslationResult r)
+    {
+        // 第一步：行尾單獨的「回傳」「拋出」先補「;」，否則 Roslyn 會把下一行當成回傳值（return 名稱 = …）。
+        r = InsertSemicolons(r, (tree, text) => tree.GetRoot().DescendantTokens()
+            .Where(t => t.RawKind is (int)SyntaxKind.ReturnKeyword or (int)SyntaxKind.ThrowKeyword)
+            .Where(t => t.GetNextToken() is var next && next.RawKind != (int)SyntaxKind.SemicolonToken &&
+                        (next.RawKind == (int)SyntaxKind.EndOfFileToken || LineOf(text, next.SpanStart) > LineOf(text, t.Span.End)))
+            .Select(t => t.Span.End));
+
+        // 第二步：其餘解析器認為缺少「;」、且語句在行尾（或「}」、檔案結尾）結束的位置。
+        return InsertSemicolons(r, (tree, text) => tree.GetRoot().DescendantTokens()
+            .Where(t => t.IsMissing && t.RawKind == (int)SyntaxKind.SemicolonToken)
+            .Select(t => (prev: t.GetPreviousToken(), next: t.GetNextToken()))
+            .Where(p => p.prev.RawKind != 0)
+            .Where(p => p.next.RawKind is 0 or (int)SyntaxKind.EndOfFileToken or (int)SyntaxKind.CloseBraceToken
+                        || LineOf(text, p.next.SpanStart) > LineOf(text, p.prev.Span.End))
+            .Select(p => p.prev.Span.End));
+    }
+
+    private static int LineOf(Microsoft.CodeAnalysis.Text.SourceText text, int position) =>
+        text.Lines.GetLineFromPosition(position).LineNumber;
+
+    /// <summary>在 find 找到的位置插入「;」，並同步更新位置對照表。</summary>
+    private static TranslationResult InsertSemicolons(TranslationResult r,
+        Func<Microsoft.CodeAnalysis.SyntaxTree, Microsoft.CodeAnalysis.Text.SourceText, IEnumerable<int>> find)
+    {
+        var tree = Microsoft.CodeAnalysis.CSharp.CSharpSyntaxTree.ParseText(r.Code, SemicolonParseOptions);
+        var positions = new SortedSet<int>(find(tree, tree.GetText()));
+        if (positions.Count == 0) return r;
+
+        var code = new StringBuilder(r.Code.Length + positions.Count);
+        var map = new List<int>(r.Map.Length + positions.Count);
+        for (int i = 0; i <= r.Code.Length; i++)
+        {
+            if (positions.Contains(i))
+            {
+                code.Append(';');
+                map.Add(r.Map[i]);
+            }
+            if (i < r.Code.Length) code.Append(r.Code[i]);
+            map.Add(r.Map[i]);
+        }
+        return new TranslationResult(code.ToString(), map.ToArray(), r.References);
+    }
 
     public static string ToChinese(string csharp) => new ReverseScanner(csharp).Run();
 
-    internal static bool IsIdentStart(char c) => c == '_' || char.IsLetter(c);
+    public static bool IsIdentStart(char c) => c == '_' || char.IsLetter(c);
 
-    internal static bool IsIdentPart(char c)
+    public static bool IsIdentPart(char c)
     {
         if (c == '_' || char.IsLetterOrDigit(c)) return true;
         var cat = char.GetUnicodeCategory(c);
@@ -106,29 +160,27 @@ public static class Translator
             while (i < S.Length)
             {
                 char c = S[i];
-                if (c == '/' && At(i + 1) == '/')
+                if (IsSlash(c) && IsSlash(At(i + 1)))
                 {
-                    int e = S.IndexOf('\n', i);
-                    if (e < 0) e = S.Length;
-                    Copy(i, e);
-                    i = e;
+                    i = LineComment(i, 2);
                 }
-                else if (c == '/' && At(i + 1) == '*')
+                else if (IsSlash(c) && IsStar(At(i + 1)))
                 {
-                    int e = S.IndexOf("*/", i + 2, StringComparison.Ordinal);
-                    e = e < 0 ? S.Length : e + 2;
-                    Copy(i, e);
-                    i = e;
+                    i = BlockComment(i, 2);
                 }
                 else if (c == '"')
                 {
                     i = At(i + 1) == '"' && At(i + 2) == '"' ? ScanRawString(i, i) : ScanRegularString(i, false, false);
                 }
-                else if (c == '@' && At(i + 1) == '"')
+                else if (c == '＂')
+                {
+                    i = ScanRegularString(i, false, false);
+                }
+                else if (c == '@' && IsQuote(At(i + 1)))
                 {
                     i = ScanRegularString(i, true, false);
                 }
-                else if (c == '@' && At(i + 1) == '$' && At(i + 2) == '"')
+                else if (c == '@' && IsDollar(At(i + 1)) && IsQuote(At(i + 2)))
                 {
                     i = ScanRegularString(i, true, true);
                 }
@@ -140,14 +192,14 @@ public static class Translator
                     Copy(i, e);
                     i = e;
                 }
-                else if (c == '$')
+                else if (IsDollar(c))
                 {
                     int j = i;
-                    while (At(j) == '$') j++;
-                    if (At(j) == '@' && At(j + 1) == '"') i = ScanRegularString(i, true, true);
+                    while (IsDollar(At(j))) j++;
+                    if (At(j) == '@' && IsQuote(At(j + 1))) i = ScanRegularString(i, true, true);
                     else if (At(j) == '"' && At(j + 1) == '"' && At(j + 2) == '"') i = ScanRawString(i, j);
-                    else if (At(j) == '"') i = ScanRegularString(i, false, true);
-                    else { Emit(c, i); i++; }
+                    else if (IsQuote(At(j))) i = ScanRegularString(i, false, true);
+                    else { Emit(c == '＄' ? '$' : c, i); i++; }
                 }
                 else if (c == '\'')
                 {
@@ -180,21 +232,76 @@ public static class Translator
             return i;
         }
 
-        /// <summary>一般／逐字／插值字串。i 指向字串前綴的第一個字元。</summary>
+        protected static bool IsSlash(char c) => c is '/' or '／';
+
+        protected static bool IsStar(char c) => c is '*' or '＊';
+
+        /// <summary>單行註解：開頭（//、／／ 或「註解」，長度 openLength）輸出為 //，其餘到行尾原樣保留。</summary>
+        protected int LineComment(int i, int openLength)
+        {
+            int e = S.IndexOf('\n', i);
+            if (e < 0) e = S.Length;
+            if (e > i && S[e - 1] == '\r') e--;
+            Emit("//", i);
+            Copy(i + openLength, e);
+            return e;
+        }
+
+        /// <summary>
+        /// 區塊註解：開頭（/*、／＊ 或「開始註解」）輸出為 /*，內容原樣保留，
+        /// 結尾可以是 */、＊／ 或「結束註解」，輸出為 */。
+        /// </summary>
+        protected int BlockComment(int i, int openLength)
+        {
+            Emit("/*", i);
+            int from = i + openLength;
+            int end = S.Length, endLength = 0;
+            foreach (var closer in new[] { "*/", "＊／", "結束註解" })
+            {
+                int p = S.IndexOf(closer, from, StringComparison.Ordinal);
+                if (p >= 0 && p < end) { end = p; endLength = closer.Length; }
+            }
+            Copy(from, end);
+            if (endLength > 0) Emit("*/", end);
+            return end + endLength;
+        }
+
+        protected static bool IsQuote(char c) => c is '"' or '＂';
+
+        protected static bool IsDollar(char c) => c is '$' or '＄';
+
+        /// <summary>
+        /// 一般／逐字／插值字串。i 指向字串前綴的第一個字元。
+        /// 全形與半形互通：＄、＂ 一律輸出為 $、"；字串以哪種引號開頭就以同一種引號結尾，
+        /// 以 ＂ 開頭的字串中出現的半形 " 會自動跳脫。
+        /// </summary>
         private int ScanRegularString(int i, bool verbatim, bool interpolated)
         {
-            int q = S.IndexOf('"', i);
-            Copy(i, q + 1);
+            int q = i;
+            while (!IsQuote(S[q])) q++;
+            char close = S[q];
+            for (int k = i; k <= q; k++)
+                Emit(S[k] switch { '＄' => '$', '＂' => '"', var ch => ch }, k);
             i = q + 1;
             while (i < S.Length)
             {
                 char c = S[i];
-                if (!verbatim && c == '\\') { Copy(i, i + 2); i += 2; continue; }
-                if (c == '"')
+                if (!verbatim && c == '\\')
                 {
-                    if (verbatim && At(i + 1) == '"') { Copy(i, i + 2); i += 2; continue; }
-                    Emit(c, i);
+                    if (At(i + 1) == '＂') { Emit("\\\"", i); i += 2; continue; }
+                    Copy(i, i + 2); i += 2; continue;
+                }
+                if (c == close)
+                {
+                    if (verbatim && At(i + 1) == close) { Emit("\"\"", i); i += 2; continue; }
+                    Emit('"', i);
                     return i + 1;
+                }
+                if (c == '"') // 以 ＂ 開頭的字串中的半形引號：當作內容，需跳脫
+                {
+                    Emit(verbatim ? "\"\"" : "\\\"", i);
+                    i++;
+                    continue;
                 }
                 if (!verbatim && c == '\n') return i; // 未結束的字串：交還給程式碼掃描
                 if (interpolated && c == '{')
@@ -262,7 +369,7 @@ public static class Translator
                 if (!IsIdentStart(S[i])) { i++; continue; }
                 int e = i;
                 while (e < S.Length && IsIdentPart(S[e])) e++;
-                foreach (var part in S[i..e].Split(KeywordDictionary.MemberAccessChar))
+                foreach (var part in S[i..e].Split(KeywordDictionary.MemberAccessChar, KeywordDictionary.SpaceChar))
                     AddNameParts(part, set);
                 i = e;
             }
@@ -338,18 +445,44 @@ public static class Translator
             int e = i;
             while (e < S.Length && IsIdentPart(S[e])) e++;
 
-            // 以「的」切開，每段做完整詞比對。
+            // 「註解」（→ //）、「開始註解」（→ /*）、「結束註解」（→ */）：前面的部分照常轉換，之後交給註解處理。
+            int cw = -1, cwLength = 0;
+            foreach (var word in new[] { "開始註解", "結束註解", "註解" })
+            {
+                int p = S.IndexOf(word, i, e - i, StringComparison.Ordinal);
+                if (p >= 0 && (cw < 0 || p < cw)) { cw = p; cwLength = word.Length; }
+            }
+            if (cw >= 0)
+            {
+                if (cw > i) TranslateRun(i, cw);
+                return S.AsSpan(cw).StartsWith("開始註解") ? BlockComment(cw, 4)
+                     : S.AsSpan(cw).StartsWith("結束註解") ? EmitAndSkip("*/", cw, 4)
+                     : LineComment(cw, 2);
+            }
+
+            TranslateRun(i, e);
+            return e;
+        }
+
+        private int EmitAndSkip(string text, int pos, int length)
+        {
+            Emit(text, pos);
+            return pos + length;
+        }
+
+        /// <summary>翻譯一段識別字字元：以「的」（→ .）與「之」（→ 空白）切開，每段做完整詞比對。</summary>
+        private void TranslateRun(int i, int e)
+        {
             int pieceStart = i;
             for (int k = i; k <= e; k++)
             {
-                if (k == e || S[k] == KeywordDictionary.MemberAccessChar)
+                if (k == e || S[k] is KeywordDictionary.MemberAccessChar or KeywordDictionary.SpaceChar)
                 {
                     if (k > pieceStart) TranslatePiece(pieceStart, k);
-                    if (k < e) Emit('.', k);
+                    if (k < e) Emit(S[k] == KeywordDictionary.SpaceChar ? ' ' : '.', k);
                     pieceStart = k + 1;
                 }
             }
-            return e;
         }
 
         /// <summary>
@@ -468,11 +601,11 @@ public static class Translator
                 bool padded;
                 switch (token.Text)
                 {
-                    // 比較、&& ||：二元運算式或關係模式（是 大於 3）。
+                    // 比較、&& ||：二元運算式或關係模式（是 大於 3）；可黏著寫，保留來源原本的空白。
                     case "==" or "!=" or "<" or ">" or "<=" or ">=" or "&&" or "||"
                         when parent is Microsoft.CodeAnalysis.CSharp.Syntax.BinaryExpressionSyntax
                                     or Microsoft.CodeAnalysis.CSharp.Syntax.RelationalPatternSyntax:
-                        padded = true;
+                        padded = false;
                         break;
                     // 邏輯非 !x（不含 null 容許的 x!）；輸出「非 x」（加空白，任何名稱都能正確轉回）。
                     case "!" when parent is Microsoft.CodeAnalysis.CSharp.Syntax.PrefixUnaryExpressionSyntax:

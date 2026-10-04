@@ -58,7 +58,7 @@ Version	版本	屬性
 AllowAutoRedirect	允許自動重新導向	屬性
 CacheControl	快取控制項	屬性
 Clear	清除	方法
-Comment	註解	屬性
+Comment	備註	屬性
 Connection	連線物件	屬性
 ConnectionClose	連線物件關閉	屬性
 Content	內容	屬性

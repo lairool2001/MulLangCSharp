@@ -68,6 +68,8 @@ RemoveHandler	移除處理常式	方法
 Transform	變換	方法
 Contains	包含	方法
 Offset	位移	方法
+X	X鍵	屬性
+Y	Y鍵	屬性
 AddListener	新增接聽程式	方法
 Create	建立	方法
 Empty	空白	欄位
@@ -200,10 +202,8 @@ InvalidateProperty	使無效屬性	方法
 IsCompleted	是否已完成	屬性
 IsConstructorArgument	是否建構函式引數	屬性
 IsContent	是否內容	屬性
-IsCurrentAfterLast	是否目前之後最後一個	屬性
-IsCurrentBeforeFirst	是否目前之前第一個	屬性
 IsEnabled	是否已啟用	屬性
-IsInstanceOfType	是否執行個體之型別	方法
+IsInstanceOfType	是否執行個體所屬型別	方法
 IsKey	是否鍵	屬性
 IsValidType	是否有效型別	方法
 IsValidValue	是否有效值	方法
@@ -292,8 +292,6 @@ WriteLock	寫鎖定	屬性
 message	訊息	屬性
 time	時間	屬性
 None	無	列舉值
-X	X鍵	列舉值
-Y	Y鍵	列舉值
 Down	下	列舉值
 Invalid	無效	列舉值
 Next	下一個	列舉值

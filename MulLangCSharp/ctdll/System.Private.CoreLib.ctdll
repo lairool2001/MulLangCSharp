@@ -33,7 +33,7 @@ Enumerator	列舉器	結構
 Assembly	組件	類別
 Module	模組	類別
 CharSet	字元設定	列舉
-DayOfWeek	日之週	列舉
+DayOfWeek	日所屬週	列舉
 Encoding	編碼方式	類別
 Exception	例外	類別
 Scope	作用域	結構
@@ -119,7 +119,7 @@ ApplicationId	應用程式識別碼	類別
 ArgIterator	引數迭代器	結構
 ArgumentException	引數例外	類別
 ArgumentNullException	引數空例外	類別
-ArgumentOutOfRangeException	引數輸出之範圍例外	類別
+ArgumentOutOfRangeException	引數輸出所屬範圍例外	類別
 ArithmeticException	算術例外	類別
 ArrayList	陣列清單	類別
 ArrayPool	陣列集區	類別
@@ -207,7 +207,7 @@ DisablePrivateReflectionAttribute	停用私有反射特性	類別
 DivideByZeroException	除以零例外	類別
 EncodingInfo	編碼方式資訊	類別
 EncodingProvider	編碼方式提供者	類別
-EndOfStreamException	結尾之資料流例外	類別
+EndOfStreamException	結尾所屬資料流例外	類別
 EnumBuilder	列舉建構器	類別
 EnumeratorCancellationAttribute	列舉器取消作業特性	類別
 Environment	環境	類別
@@ -311,7 +311,7 @@ ITypeInfo	型別資訊介面	介面
 ITypeInfo2	型別資訊2介面	介面
 ImageFileMachine	影像檔案電腦	列舉
 InAttribute	在特性	類別
-IndexOutOfRangeException	索引輸出之範圍例外	類別
+IndexOutOfRangeException	索引輸出所屬範圍例外	類別
 Int128	整數128	結構
 InterfaceTypeAttribute	介面型別特性	類別
 Interlocked	連鎖	類別
@@ -363,7 +363,7 @@ ObjectHandle	物件控制代碼	類別
 OperationStatus	作業狀況	列舉
 OrdinalComparer	序數比較子	類別
 OutAttribute	輸出特性	類別
-OutOfMemoryException	輸出之記憶體例外	類別
+OutOfMemoryException	輸出所屬記憶體例外	類別
 OverflowException	溢位例外	類別
 ParameterAttributes	參數特性群	列舉
 ParameterBuilder	參數建構器	類別
@@ -525,7 +525,7 @@ ExpandLoad	展開載入	方法
 None	無	方法
 GetCustomAttributes	取得自訂特性群	方法
 Insert	插入	方法
-LastIndexOf	最後一個索引之	方法
+LastIndexOf	最後一個索引所屬	方法
 Value	值	屬性
 Compare	比較	方法
 Read	讀取	方法
@@ -629,7 +629,7 @@ AddValue	新增值	方法
 All	全部	屬性
 AsSpan	為跨度	方法
 CreateDelegate	建立委派	方法
-IndexOfAny	索引之任何	方法
+IndexOfAny	索引所屬任何	方法
 Item1	項目1	屬性
 LoadUnsafe	載入不安全	方法
 Start	啟動	屬性
@@ -654,11 +654,11 @@ ContainsAnyExcept	包含任何排除	方法
 ConvertToInt64	轉換轉整數64	方法
 GetValue	取得值	方法
 GetYear	取得年	方法
-IndexOfAnyExcept	索引之任何排除	方法
+IndexOfAnyExcept	索引所屬任何排除	方法
 IsInteger	是否整數值	方法
 Item2	項目2	屬性
-LastIndexOfAny	最後一個索引之任何	方法
-LastIndexOfAnyExcept	最後一個索引之任何排除	方法
+LastIndexOfAny	最後一個索引所屬任何	方法
+LastIndexOfAnyExcept	最後一個索引所屬任何排除	方法
 OnCompleted	於已完成	方法
 SetValue	設定值	方法
 Transform	變換	方法
@@ -681,9 +681,9 @@ AnyTrue	任何真	方法
 Assert	判斷提示	方法
 CreateScale	建立縮放	方法
 DisposeAsync	處置非同步	方法
-GetDayOfMonth	取得日之月	方法
-GetDayOfWeek	取得日之週	方法
-GetDayOfYear	取得日之年	方法
+GetDayOfMonth	取得日所屬月	方法
+GetDayOfWeek	取得日所屬週	方法
+GetDayOfYear	取得日所屬年	方法
 GetMonth	取得月	方法
 GetResult	取得結果	方法
 Item3	項目3	屬性
@@ -711,7 +711,6 @@ AppendJoin	附加連接	方法
 BufferSize	緩衝區大小	屬性
 EndsWith	結尾為	方法
 Exists	存在	方法
-ExtractAfterLastActiveElement	取出之後最後一個作用中元素	方法
 ExtractLastActiveElement	取出最後一個作用中元素	方法
 GetActiveElementCount	取得作用中元素數量	方法
 GetElement	取得元素	方法
@@ -767,10 +766,9 @@ BitIncrement	位元增量	方法
 CanRead	可以讀取	屬性
 CanWrite	可以寫	屬性
 CopyToAsync	複製轉非同步	方法
-DaysInYearBeforeMinSupportedYear	天數在年之前最小已支援年	屬性
 DefineType	定義型別	方法
 End	結尾	方法
-GetWeekOfYear	取得週之年	方法
+GetWeekOfYear	取得週所屬年	方法
 Keys	鍵群	屬性
 Log10	對數10	方法
 MemberType	成員型別	屬性
@@ -813,7 +811,7 @@ RemoveAt	移除位於	方法
 ReverseElement32	反轉元素32	方法
 SetLength	設定長度	方法
 Size	大小	屬性
-SizeOf	大小之	方法
+SizeOf	大小所屬	方法
 WhenAll	當全部	方法
 WhenEach	當每個	方法
 WriteIf	寫若	方法
@@ -944,7 +942,7 @@ ConvertToDoubleLower	轉換轉雙精度小寫	方法
 CountAny	數量任何	方法
 CreateCopy	建立複製	方法
 CreateInstanceFromArrayType	建立執行個體從陣列型別	方法
-DayOfYear	日之年	屬性
+DayOfYear	日所屬年	屬性
 DecodeFromChars	解碼從字元群	方法
 DefineGlobalMethod	定義全域方法	方法
 DefineParameter	定義參數	方法
@@ -1017,7 +1015,7 @@ ReadLine	讀行	方法
 ReadToEnd	讀取轉結尾	方法
 ResolveLinkTarget	解決連結目標	方法
 Result	結果	方法
-RoundUpToPowerOf2	四捨五入上轉冪之2	方法
+RoundUpToPowerOf2	四捨五入上轉冪所屬2	方法
 Second	秒	屬性
 SequenceCompareTo	序列比較轉	方法
 SetConstant	設定常數值	方法
@@ -1030,7 +1028,7 @@ SetLastWriteTimeUtc	設定最後一個寫時間世界標準時間	方法
 SignalAndWait	訊號與等候	方法
 State	狀態	屬性
 TargetTypeName	目標型別名稱	屬性
-TimeOfDay	時間之日	屬性
+TimeOfDay	時間所屬日	屬性
 ToHexString	轉十六進位字串	方法
 ToHexStringLower	轉十六進位字串小寫	方法
 ToLocalTime	轉本機時間	方法
@@ -1048,7 +1046,7 @@ Year	年	屬性
 Abort	中止	方法
 AddByteOffset	新增位元組位移	方法
 AddTicks	新增刻度數	方法
-AddressOfMember	位址之成員	方法
+AddressOfMember	位址所屬成員	方法
 AppendAllBytes	附加全部位元組群	方法
 AppendAllBytesAsync	附加全部位元組群非同步	方法
 AppendAllLines	附加全部行群	方法
@@ -1062,8 +1060,7 @@ BaseType	基底型別	屬性
 Begin	開始	方法
 BuilderType	建構器型別	屬性
 ByteLength	位元組長度	方法
-Call	呼叫	欄位
-CancelAfter	取消之後	方法
+Call	調用	欄位
 Cast	轉型	方法
 CheckId	檢查識別碼	屬性
 CodePage	程式碼頁面	屬性
@@ -1172,7 +1169,7 @@ GetStream	取得資料流	方法
 GetStringComparer	取得字串比較子	方法
 GetTextElementEnumerator	取得文字元素列舉器	方法
 GetTypeInfoCount	取得型別資訊數量	方法
-GetTypeInfoOfGuid	取得型別資訊之全域唯一識別碼	方法
+GetTypeInfoOfGuid	取得型別資訊所屬全域唯一識別碼	方法
 GetTypeInfoType	取得型別資訊型別	方法
 GetTypes	取得型別群	方法
 GetValueRefOrAddDefault	取得值參考或新增預設	方法
@@ -1181,13 +1178,12 @@ GetValues	取得值群	方法
 Handled	已處理	屬性
 HasExtension	有擴充	方法
 Identifier	識別項	屬性
-IndexOfAnyExceptInRange	索引之任何排除在範圍	方法
-IndexOfAnyInRange	索引之任何在範圍	方法
+IndexOfAnyExceptInRange	索引所屬任何排除在範圍	方法
+IndexOfAnyInRange	索引所屬任何在範圍	方法
 Instance	執行個體	屬性
 IsAbstract	是否抽象	屬性
 IsAssembly	是否組件	屬性
 IsAsync	是否非同步	屬性
-IsBetween	是否之間	方法
 IsClosed	是否已關閉	屬性
 IsDynamic	是否動態	屬性
 IsFunctionPointer	是否函數指標	屬性
@@ -1203,8 +1199,8 @@ IsValueCreated	是否值已建立	屬性
 IsVariableBoundArray	是否變數界限陣列	屬性
 Items	項目群	屬性
 LastAccessTimeUtc	最後一個存取時間世界標準時間	屬性
-LastIndexOfAnyExceptInRange	最後一個索引之任何排除在範圍	方法
-LastIndexOfAnyInRange	最後一個索引之任何在範圍	方法
+LastIndexOfAnyExceptInRange	最後一個索引所屬任何排除在範圍	方法
+LastIndexOfAnyInRange	最後一個索引所屬任何在範圍	方法
 LastWriteTimeUtc	最後一個寫時間世界標準時間	屬性
 LoadFrom	載入從	方法
 LoadFromStream	載入從資料流	方法
@@ -1227,7 +1223,7 @@ Now	現在	屬性
 Offset	位移	屬性
 OffsetHigh	位移高	欄位
 OffsetLow	位移低	欄位
-OffsetOf	位移之	方法
+OffsetOf	位移所屬	方法
 OpenRead	開啟讀取	方法
 OpenText	開啟文字	方法
 OpenWrite	開啟寫	方法
@@ -1493,7 +1489,7 @@ EncodeToString	編碼轉字串	方法
 EncodingName	編碼方式名稱	屬性
 EndAt	結尾位於	方法
 EndExceptionBlock	結尾例外區塊	方法
-EndOfStream	結尾之資料流	屬性
+EndOfStream	結尾所屬資料流	屬性
 EndScope	結尾作用域	方法
 Entry	條目	屬性
 EnumConnectionPoints	列舉連線物件點群	方法
@@ -1529,7 +1525,7 @@ FilterTypeName	篩選器型別名稱	欄位
 FilterTypeNameIgnoreCase	篩選器型別名稱忽略大小寫	欄位
 FindConnectionPoint	尋找連線物件點	方法
 FindTypes	尋找型別群	方法
-FirstDayOfWeek	第一個日之週	屬性
+FirstDayOfWeek	第一個日所屬週	屬性
 Flag	旗標	欄位
 FormatProvider	格式化提供者	屬性
 FrameCount	框架數量	屬性
@@ -1553,9 +1549,9 @@ GenerateGuidForType	產生全域唯一識別碼給型別	方法
 GenericParameterPosition	泛型參數位置	屬性
 GenericTypeParameters	泛型型別參數群	屬性
 Get	取得	方法
-GetAddressOfArrayData	取得位址之陣列資料	方法
-GetAddressOfObjectData	取得位址之物件資料	方法
-GetAddressOfStringData	取得位址之字串資料	方法
+GetAddressOfArrayData	取得位址所屬陣列資料	方法
+GetAddressOfObjectData	取得位址所屬物件資料	方法
+GetAddressOfStringData	取得位址所屬字串資料	方法
 GetArgument	取得引數	方法
 GetArguments	取得引數群	方法
 GetArray	取得陣列	方法
@@ -1733,7 +1729,7 @@ IsGenericMethod	是否泛型方法	屬性
 IsGenericParameter	是否泛型參數	屬性
 IsGenericType	是否泛型型別	屬性
 IsHidden	是否隱藏	屬性
-IsInstanceOfType	是否執行個體之型別	方法
+IsInstanceOfType	是否執行個體所屬型別	方法
 IsInterface	是否介面	屬性
 IsInvalidTime	是否無效時間	方法
 IsNotPublic	是否不公開	屬性
@@ -1971,8 +1967,6 @@ ShortTimePattern	短整數時間樣式	屬性
 ShouldIncludeEntry	應該包括條目	方法
 Signal	訊號	屬性
 SingleToInt32Bits	單一轉整數32位元群	方法
-SizeAfterBytes	大小之後位元組群	屬性
-SizeBeforeBytes	大小之前位元組群	屬性
 SizeConst	大小常數	欄位
 SizeCore	大小核心	屬性
 SortId	排序識別碼	屬性
@@ -2109,7 +2103,7 @@ Explicit	明確	列舉值
 Failed	已失敗	列舉值
 ForwardRef	向前參考	列舉值
 HasSecurity	有安全性	列舉值
-InternalCall	內部呼叫	列舉值
+InternalCall	內部調用	列舉值
 LongRunning	長整數執行中	列舉值
 Machine	電腦	列舉值
 Native	原生	列舉值

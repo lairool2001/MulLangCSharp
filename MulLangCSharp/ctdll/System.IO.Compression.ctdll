@@ -28,7 +28,7 @@ ReadByte	讀取位元組	方法
 Seek	定位	方法
 SetLength	設定長度	方法
 WriteByte	寫位元組	方法
-Comment	註解	屬性
+Comment	備註	屬性
 CreateEntry	建立條目	方法
 CreateAsync	建立非同步	方法
 Delete	刪除	方法

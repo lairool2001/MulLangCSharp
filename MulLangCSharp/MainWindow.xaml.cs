@@ -106,6 +106,9 @@ public partial class MainWindow : Window
         UpdateTitle();
         UpdateTranslation();
         UpdateUiState();
+        BtnGlue.IsChecked = AppSettings.GetBool("FormatGlue", true);
+        BtnHalfWidth.IsChecked = AppSettings.GetBool("TypingHalfWidth", false);
+        _intelliSense.ConvertFullWidthOnTyping = BtnHalfWidth.IsChecked == true;
     }
 
     // ───────────────────────── 轉換與即時錯誤檢查 ─────────────────────────
@@ -503,13 +506,13 @@ public partial class MainWindow : Window
     {
         if (_state != IdeState.編輯中 || !ConfirmDiscard()) return;
         LoadText("""
-            使用 系統;
+            使用之系統
 
-            類別 程式
+            類別之程式
             {
-                靜態 虛無 主程式()
+                靜態之虛無之主程式()
                 {
-                    主控台的寫行("你好！");
+                    主控台的寫行("你好！")
                 }
             }
 
@@ -624,6 +627,23 @@ public partial class MainWindow : Window
 
     private void FormatDocument_Click(object sender, RoutedEventArgs e) => FormatDocument();
 
+    private void HalfWidthToggle_Changed(object sender, RoutedEventArgs e)
+    {
+        if (!IsLoaded) return;
+        bool on = BtnHalfWidth.IsChecked == true;
+        _intelliSense.ConvertFullWidthOnTyping = on;
+        AppSettings.SetBool("TypingHalfWidth", on);
+        StatusText.Text = on ? "半形輸入：全形符號會自動換成半形" : "全形與半形互通：打什麼就保留什麼";
+    }
+
+    private void GlueToggle_Changed(object sender, RoutedEventArgs e)
+    {
+        if (!IsLoaded) return;
+        bool glue = BtnGlue.IsChecked == true;
+        AppSettings.SetBool("FormatGlue", glue);
+        StatusText.Text = glue ? "格式化：黏著寫（c被指派0）" : "格式化：標準空白（c 被指派 0）";
+    }
+
     /// <summary>美化文字格式：只調整縮排、空白、換行；整次變更可用一次 Ctrl+Z 復原。</summary>
     private void FormatDocument()
     {
@@ -632,7 +652,8 @@ public partial class MainWindow : Window
         {
             var doc = Editor.Document;
             var newLine = doc.Text.Contains("\r\n") ? "\r\n" : "\n";
-            var edits = CodeFormatter.ComputeEdits(doc.Text, newLine);
+            bool glue = BtnGlue.IsChecked == true;
+            var edits = CodeFormatter.ComputeEdits(doc.Text, newLine, glue: glue);
             if (edits.Count == 0) { StatusText.Text = "格式已經是整齊的"; return; }
 
             doc.BeginUpdate();
@@ -645,7 +666,7 @@ public partial class MainWindow : Window
             {
                 doc.EndUpdate();
             }
-            StatusText.Text = $"已格式化文件（{edits.Count} 處變更）";
+            StatusText.Text = $"已格式化文件（{edits.Count} 處變更，{(glue ? "黏著寫" : "標準空白")}）";
         }
         catch (Exception ex)
         {

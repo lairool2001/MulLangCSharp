@@ -46,8 +46,8 @@ GetHashCode	取得雜湊程式碼	方法
 GetKey	取得鍵	方法
 GetKeyList	取得鍵清單	方法
 GetValueList	取得值清單	方法
-IndexOfKey	索引之鍵	方法
-IndexOfValue	索引之值	方法
+IndexOfKey	索引所屬鍵	方法
+IndexOfValue	索引所屬值	方法
 IsFixedSize	是否固定大小	屬性
 IsReadOnly	是否讀取僅	屬性
 Keys	鍵群	屬性

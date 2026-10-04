@@ -140,7 +140,7 @@ public static class WordGlossary
         bytes=位元組群
         cache=快取
         calculate=計算
-        call=呼叫
+        call=調用
         callback=回呼
         can=可以
         cancel=取消
@@ -176,7 +176,7 @@ public static class WordGlossary
         column=欄
         combine=結合
         command=命令
-        comment=註解
+        comment=備註
         common=通用
         compare=比較
         comparer=比較子
@@ -461,7 +461,7 @@ public static class WordGlossary
         number=數值
         numeric=數值型
         object=物件
-        of=之
+        of=所屬
         off=關
         offset=位移
         old=舊

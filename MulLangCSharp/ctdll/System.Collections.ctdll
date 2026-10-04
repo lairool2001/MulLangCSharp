@@ -37,8 +37,6 @@ IndexOf	索引位置	方法
 Insert	插入	方法
 Keys	鍵群	屬性
 Values	值群	屬性
-AddAfter	新增之後	方法
-AddBefore	新增之前	方法
 AddFirst	新增第一個	方法
 AddLast	新增最後一個	方法
 CreateSetComparer	建立設定比較子	方法
@@ -63,9 +61,8 @@ GetAt	取得位於	方法
 GetHashCode	取得雜湊程式碼	方法
 GetKeyAtIndex	取得鍵位於索引	方法
 GetValueAtIndex	取得值位於索引	方法
-GetViewBetween	取得檢視之間	方法
-IndexOfKey	索引之鍵	方法
-IndexOfValue	索引之值	方法
+IndexOfKey	索引所屬鍵	方法
+IndexOfValue	索引所屬值	方法
 Last	最後一個	屬性
 List	清單	屬性
 Max	最大值	屬性

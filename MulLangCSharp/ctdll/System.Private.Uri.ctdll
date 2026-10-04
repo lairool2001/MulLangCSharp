@@ -24,7 +24,7 @@ Port	連接埠	屬性
 AbsoluteUri	絕對統一資源識別碼	屬性
 EscapeDataString	跳脫資料字串	方法
 GetHashCode	取得雜湊程式碼	方法
-IsBaseOf	是否基底之	方法
+IsBaseOf	是否基底所屬	方法
 PathAndQuery	路徑與查詢	屬性
 ToString	轉字串	方法
 UserInfo	使用者資訊	屬性

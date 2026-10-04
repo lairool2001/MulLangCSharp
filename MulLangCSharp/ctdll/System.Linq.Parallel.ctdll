@@ -51,7 +51,7 @@ ElementAt	元素位於	方法
 ElementAtOrDefault	元素位於或預設	方法
 Empty	空白	方法
 ForAll	給全部	方法
-OfType	之型別	方法
+OfType	所屬型別	方法
 Range	範圍	方法
 Repeat	重複	方法
 Reverse	反轉	方法

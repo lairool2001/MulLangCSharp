@@ -363,7 +363,7 @@ Parent	父項	屬性
 TryGetData	嘗試取得資料	方法
 Active	作用中	屬性
 ContainsKey	包含鍵	方法
-IndexOfKey	索引之鍵	方法
+IndexOfKey	索引所屬鍵	方法
 KeyDown	鍵下	事件
 KeyPress	鍵按下	事件
 KeyUp	鍵上	事件
@@ -461,6 +461,8 @@ Sort	排序	方法
 TextDirection	文字方向	屬性
 UseCompatibleTextRendering	使用相容文字轉譯	屬性
 ValidateChildren	驗證子項群	方法
+X	X鍵	屬性
+Y	Y鍵	屬性
 Abort	中止	方法
 Action	動作	屬性
 ActiveLinkColor	作用中連結色彩	屬性
@@ -565,7 +567,7 @@ GetCreateInstanceSupported	取得建立執行個體已支援	方法
 GetDefaultProperty	取得預設屬性	方法
 GetErrorText	取得錯誤文字	方法
 GetFirstCharIndexFromLine	取得第一個字元索引從行	方法
-GetFirstCharIndexOfCurrentLine	取得第一個字元索引之目前行	方法
+GetFirstCharIndexOfCurrentLine	取得第一個字元索引所屬目前行	方法
 GetItemAt	取得項目位於	方法
 GetItemHeight	取得項目高度	方法
 GetMinimumHeight	取得最小限度高度	方法
@@ -836,9 +838,6 @@ AddStandardItems	新增標準項目群	方法
 AddState	新增狀態	方法
 AdjustColumnHeaderBorderStyle	調整欄標頭框線風格	方法
 AdjustRowHeaderBorderStyle	調整列標頭框線風格	方法
-AfterCheck	之後檢查	事件
-AfterExpand	之後展開	事件
-AfterSelect	之後選取	事件
 AllowCancel	允許取消	屬性
 AllowCloseDialog	允許關閉對話方塊	屬性
 AllowCurrentPage	允許目前頁面	屬性
@@ -864,9 +863,6 @@ AutoResize	自動調整大小	方法
 Available	可用	屬性
 BackButtonClick	返回按鈕按一下	事件
 BeepOnError	嗶聲於錯誤	屬性
-BeforeCheck	之前檢查	事件
-BeforeExpand	之前展開	事件
-BeforeSelect	之前選取	事件
 BoundDialog	界限對話方塊	屬性
 BoundPage	界限頁面	屬性
 Break	中斷	屬性
@@ -902,7 +898,7 @@ ColumnHeaderMouseDoubleClick	欄標頭滑鼠雙精度按一下	事件
 ColumnNumber	欄數值	屬性
 ColumnRemoved	欄已移除	事件
 ColumnWidth	欄寬度	屬性
-Comment	註解	屬性
+Comment	備註	屬性
 Compare	比較	方法
 Component	元件	屬性
 ContainsData	包含資料	方法
@@ -991,7 +987,7 @@ FindForm	尋找表單	方法
 FindHandle	尋找控制代碼	常數
 FindMergePosition	尋找合併位置	方法
 FirstActivate	第一個啟動作用	屬性
-FirstDayOfWeek	第一個日之週	屬性
+FirstDayOfWeek	第一個日所屬週	屬性
 FirstNode	第一個節點	屬性
 FirstVisibleColumn	第一個可見欄	屬性
 FixedFrameBorderSize	固定框架框線大小	屬性
@@ -1059,7 +1055,7 @@ GetState	取得狀態	方法
 GetString	取得字串	方法
 GetStyle	取得風格	方法
 GetSubItemAt	取得子項目位於	方法
-GetTabPageOfComponent	取得索引標籤頁面之元件	方法
+GetTabPageOfComponent	取得索引標籤頁面所屬元件	方法
 GetTopLevel	取得頂端層級	方法
 GroupImageList	群組影像清單	屬性
 GroupIndex	群組索引	屬性
@@ -1185,14 +1181,8 @@ OffsetParent	位移父項	屬性
 OffsetRectangle	位移矩形	屬性
 OldDisplayIndex	舊顯示畫面索引	屬性
 OldTab	舊索引標籤	屬性
-OnAfterCheck	於之後檢查	方法
-OnAfterExpand	於之後展開	方法
-OnAfterSelect	於之後選取	方法
 OnApply	於套用	方法
 OnApplyComplete	於套用完成	方法
-OnBeforeCheck	於之前檢查	方法
-OnBeforeExpand	於之前展開	方法
-OnBeforeSelect	於之前選取	方法
 OnButtonDoubleClick	於按鈕雙精度按一下	方法
 OnCacheVirtualItems	於快取虛擬項目群	方法
 OnCloseUp	於關閉上	方法
@@ -1471,8 +1461,6 @@ WriteValue	寫值	方法
 BottomRight	底部右	列舉值
 Custom	自訂	列舉值
 TopLeft	頂端左	列舉值
-X	X鍵	列舉值
-Y	Y鍵	列舉值
 BottomLeft	底部左	列舉值
 Center	中心	列舉值
 NotSet	不設定	列舉值
@@ -1514,12 +1502,9 @@ Table	表格	列舉值
 A	A鍵	列舉值
 Absolute	絕對	列舉值
 Adjust	調整	列舉值
-AfterBegin	之後開始	列舉值
-AfterEnd	之後結尾	列舉值
-AfterText	之後文字	列舉值
 Alias	別名	列舉值
 Allow	允許	列舉值
-ApplicationExitCall	應用程式結束呼叫	列舉值
+ApplicationExitCall	應用程式結束調用	列舉值
 ArrayValue	陣列值	列舉值
 Ascending	升冪	列舉值
 AutoFont	自動字型	列舉值
@@ -1527,8 +1512,6 @@ AutoFontSizeAdjust	自動字型大小調整	列舉值
 AutoSizeToFirstHeader	自動大小轉第一個標頭	列舉值
 B	B鍵	列舉值
 BackgroundFill	背景填入	列舉值
-BeforeBegin	之前開始	列舉值
-BeforeEnd	之前結尾	列舉值
 Bit128	位元128	列舉值
 Bit40	位元40	列舉值
 Bit56	位元56	列舉值
@@ -1575,7 +1558,7 @@ D8	數字8鍵	列舉值
 D9	數字9鍵	列舉值
 DataSourceUpdate	資料來源更新	列舉值
 Date	日期	列舉值
-DayOfWeek	日之週	列舉值
+DayOfWeek	日所屬週	列舉值
 Decimal	小數	列舉值
 Delete	刪除	列舉值
 Descending	降冪	列舉值
@@ -1621,7 +1604,6 @@ High	高	列舉值
 Home	首頁	列舉值
 I	I鍵	列舉值
 ImageAndText	影像與文字	列舉值
-ImageBeforeText	影像之前文字	列舉值
 ImageCount	影像數量	列舉值
 ImageFile1	影像檔案1	列舉值
 ImageFile2	影像檔案2	列舉值
@@ -1637,7 +1619,7 @@ LargeDecrement	大型減量	列舉值
 LargeIncrement	大型增量	列舉值
 Last	最後一個	列舉值
 LastChild	最後一個子項	列舉值
-LeftOfLastButton	左之最後一個按鈕	列舉值
+LeftOfLastButton	左所屬最後一個按鈕	列舉值
 LeftToRight	左轉右	列舉值
 Level1	層級1	列舉值
 Level2	層級2	列舉值
@@ -1710,8 +1692,8 @@ Readonly	唯讀	列舉值
 Restore	還原	列舉值
 Return	回傳	列舉值
 Reverse	反轉	列舉值
-RightOfLabel	右之標籤	列舉值
-RightOfLastButton	右之最後一個按鈕	列舉值
+RightOfLabel	右所屬標籤	列舉值
+RightOfLastButton	右所屬最後一個按鈕	列舉值
 Root	根	列舉值
 Round	四捨五入	列舉值
 RoundSmall	四捨五入小	列舉值
@@ -1749,7 +1731,6 @@ SystemSwitchStart	系統切換啟動	列舉值
 T	T鍵	列舉值
 TableName	表格名稱	列舉值
 TakeFocus	取用焦點	列舉值
-TextBeforeImage	文字之前影像	列舉值
 TextBorderColor	文字框線色彩	列舉值
 TextBorderSize	文字框線大小	列舉值
 TextBoxControl	文字方塊控制項	列舉值

@@ -173,7 +173,7 @@ public static class CtdllTables
             frequency[name] = frequency.GetValueOrDefault(name) + 1;
             if (map.TryGetValue(name, out var seen) && seen.Order <= order) return;
             if (name.Length == 0 || !SyntaxFacts.IsValidIdentifier(name)) return;
-            string? zh = existing.TryGetValue(name, out var kept) ? kept
+            string? zh = existing.TryGetValue(name, out var kept) && KeywordDictionary.IsUsableChineseName(kept) ? kept
                 : KeywordDictionary.CSharpToChinese.TryGetValue(name, out var builtIn) ? builtIn
                 : special ?? TranslateName(name, isInterface);
             if (zh is not null && KeywordDictionary.IsUsableChineseName(zh))

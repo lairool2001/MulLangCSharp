@@ -107,7 +107,7 @@ Kind	種類	屬性
 Single	單一	方法
 Default	預設	屬性
 Offset	位移	屬性
-Call	呼叫	方法
+Call	調用	方法
 Field	欄位	方法
 Length	長度	屬性
 Method	方法	屬性
@@ -142,7 +142,7 @@ AddCodeViewEntry	新增程式碼檢視條目	方法
 AddEntry	新增條目	方法
 AddEvent	新增事件	方法
 AddProperty	新增屬性	方法
-AddressOfEntryPoint	位址之條目點	屬性
+AddressOfEntryPoint	位址所屬條目點	屬性
 Compare	比較	方法
 ContentEquals	內容相等	方法
 Culture	文化特性	屬性
@@ -222,8 +222,8 @@ AddVariable	新增變數	方法
 Alias	別名	屬性
 AssemblyFiles	組件檔案群	屬性
 AssemblyName	組件名稱	屬性
-BaseOfCode	基底之程式碼	屬性
-BaseOfData	基底之資料	屬性
+BaseOfCode	基底所屬程式碼	屬性
+BaseOfData	基底所屬資料	屬性
 BaseType	基底型別	屬性
 CatchType	捕捉型別	屬性
 CheckSum	檢查加總	屬性
@@ -372,9 +372,9 @@ ReturnType	回傳型別	屬性
 SequenceNumber	序列數值	屬性
 Shape	形狀	方法
 Sign	正負號	方法
-SizeOfCode	大小之程式碼	屬性
-SizeOfImage	大小之影像	屬性
-SizeOfRawData	大小之原始資料	屬性
+SizeOfCode	大小所屬程式碼	屬性
+SizeOfImage	大小所屬影像	屬性
+SizeOfRawData	大小所屬原始資料	屬性
 StartColumn	啟動欄	屬性
 StartLine	啟動行	屬性
 StartOffset	啟動位移	屬性

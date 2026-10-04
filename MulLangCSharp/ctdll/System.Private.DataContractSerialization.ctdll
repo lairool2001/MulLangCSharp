@@ -36,7 +36,7 @@ Add	新增	方法
 Empty	空白	屬性
 Equals	相等	方法
 GetHashCode	取得雜湊程式碼	方法
-IndexOfLocalName	索引之本機名稱	方法
+IndexOfLocalName	索引所屬本機名稱	方法
 IsLocalName	是否本機名稱	方法
 IsNamespaceUri	是否命名空間統一資源識別碼	方法
 IsValueType	是否值型別	屬性

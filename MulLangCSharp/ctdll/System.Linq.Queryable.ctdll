@@ -55,7 +55,7 @@ Cast	轉型	方法
 Concat	串接	方法
 CountBy	數量依	方法
 Index	索引	方法
-OfType	之型別	方法
+OfType	所屬型別	方法
 Reverse	反轉	方法
 Skip	略過	方法
 SkipLast	略過最後一個	方法

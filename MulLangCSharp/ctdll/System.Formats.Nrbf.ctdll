@@ -42,6 +42,6 @@ BinaryObjectString	二進位物件字串	列舉值
 ClassWithId	類別搭配識別碼	列舉值
 MemberReference	成員引用	列舉值
 MessageEnd	訊息結尾	列舉值
-MethodCall	方法呼叫	列舉值
+MethodCall	方法調用	列舉值
 MethodReturn	方法回傳	列舉值
 ObjectNull	物件空	列舉值

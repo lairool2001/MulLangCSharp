@@ -51,7 +51,7 @@ MaxBufferSize	最大緩衝區大小	屬性
 MoveNext	移動下一個	方法
 Next	下一個	屬性
 Position	位置	屬性
-PositionOf	位置之	方法
+PositionOf	位置所屬	方法
 Remaining	剩餘	屬性
 ResetWrittenCount	重設已寫入數量	方法
 RunningIndex	執行中索引	屬性

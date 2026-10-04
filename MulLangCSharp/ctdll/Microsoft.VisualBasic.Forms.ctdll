@@ -127,7 +127,6 @@ Version	版本	屬性
 Write	寫	方法
 WriteAllBytes	寫全部位元組群	方法
 WriteLine	寫行	方法
-AfterAllFormsClose	之後全部表單群關閉	列舉值
 Background	背景	列舉值
 BackgroundLoop	背景迴圈	列舉值
 CommonApplicationDirectory	通用應用程式目錄	列舉值

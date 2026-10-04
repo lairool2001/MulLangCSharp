@@ -41,7 +41,7 @@ LineNumber	行數值	屬性
 LinePosition	行位置	屬性
 NodeType	節點型別	屬性
 Read	讀取	方法
-CallBase	呼叫基底	方法
+CallBase	調用基底	方法
 Count	數量	屬性
 HasLineInfo	有行資訊	屬性
 LookupCustomAttributeProvider	查閱自訂特性提供者	方法

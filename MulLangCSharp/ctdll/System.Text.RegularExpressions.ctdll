@@ -83,7 +83,7 @@ factory	工廠	欄位
 internalMatchTimeout	內部符合逾時	欄位
 pattern	樣式	欄位
 CaptureGroupNameInvalid	擷取群組名稱無效	列舉值
-CaptureGroupOfZero	擷取群組之零	列舉值
+CaptureGroupOfZero	擷取群組所屬零	列舉值
 ExplicitCapture	明確擷取	列舉值
 IgnoreCase	忽略大小寫	列舉值
 InvalidUnicodePropertyEscape	無效萬國碼屬性跳脫	列舉值

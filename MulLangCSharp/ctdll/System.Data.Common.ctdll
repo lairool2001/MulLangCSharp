@@ -312,8 +312,8 @@ GetRowType	取得列型別	方法
 GetUnicodeBytes	取得萬國碼位元組群	方法
 HasVersion	有版本	方法
 IdentifierPattern	識別項樣式	欄位
-IndexOfDataSetColumn	索引之資料設定欄	方法
-IndexOfDataSetTable	索引之資料設定表格	方法
+IndexOfDataSetColumn	索引所屬資料設定欄	方法
+IndexOfDataSetTable	索引所屬資料設定表格	方法
 InitializeCommand	初始化命令	方法
 InsertAt	插入位於	方法
 IsFalse	是否假	屬性

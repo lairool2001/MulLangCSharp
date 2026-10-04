@@ -299,7 +299,7 @@ Default	預設	屬性
 Filter	篩選器	屬性
 GetHelpTextCore	取得說明文字核心	方法
 GetPositionInSetCore	取得位置在設定核心	方法
-GetSizeOfSetCore	取得大小之設定核心	方法
+GetSizeOfSetCore	取得大小所屬設定核心	方法
 Header	標頭	屬性
 HeaderProperty	標頭屬性	欄位
 HeaderStringFormat	標頭字串格式化	屬性
@@ -524,8 +524,8 @@ End	結尾	屬性
 ErrorContent	錯誤內容	屬性
 FillRule	填入規則	屬性
 FillRuleProperty	填入規則屬性	欄位
-FirstDayOfWeek	第一個日之週	屬性
-FirstDayOfWeekProperty	第一個日之週屬性	欄位
+FirstDayOfWeek	第一個日所屬週	屬性
+FirstDayOfWeekProperty	第一個日所屬週屬性	欄位
 Flush	排清	方法
 FocusVisualStyle	焦點視覺風格	屬性
 FocusVisualStyleProperty	焦點視覺風格屬性	欄位
@@ -560,8 +560,6 @@ Interval	間隔	屬性
 IntervalProperty	間隔屬性	欄位
 IsActive	是否作用中	屬性
 IsActiveProperty	是否作用中屬性	欄位
-IsCurrentAfterLast	是否目前之後最後一個	屬性
-IsCurrentBeforeFirst	是否目前之前第一個	屬性
 IsDataInGroupOrder	是否資料在群組順序	屬性
 IsTabStopProperty	是否索引標籤停止屬性	欄位
 IsValid	是否有效	屬性
@@ -682,16 +680,9 @@ AsyncState	非同步狀態	屬性
 Attribute	特性	屬性
 AttributesProperty	特性群屬性	欄位
 BeginUpdateSelectedItems	開始更新已選取項目群	方法
-BetweenShowDelayProperty	之間顯示延遲屬性	欄位
 BorderKey	框線鍵	屬性
 BorderWidth	框線寬度	屬性
 BorderWidthKey	框線寬度鍵	屬性
-BreakAfter	中斷之後	屬性
-BreakBefore	中斷之前	屬性
-BreakColumnBefore	中斷欄之前	屬性
-BreakColumnBeforeProperty	中斷欄之前屬性	欄位
-BreakPageBefore	中斷頁面之前	屬性
-BreakPageBeforeProperty	中斷頁面之前屬性	欄位
 ButtonStyleKey	按鈕風格鍵	屬性
 By	依	屬性
 ByProperty	依屬性	欄位
@@ -855,7 +846,6 @@ FontUriProperty	字型統一資源識別碼屬性	欄位
 FromProperty	從屬性	欄位
 GenericDictionaryLocation	泛型字典座標	屬性
 GetAttributes	取得特性群	方法
-GetBetweenShowDelay	取得之間顯示延遲	方法
 GetCacheLength	取得快取長度	方法
 GetCacheLengthUnit	取得快取長度單位	方法
 GetCharacterIndexFromLineIndex	取得字符索引從行索引	方法
@@ -945,8 +935,6 @@ InfoTextBrush	資訊文字筆刷	屬性
 InfoTextBrushKey	資訊文字筆刷鍵	屬性
 InfoTextColor	資訊文字色彩	屬性
 InfoTextColorKey	資訊文字色彩鍵	屬性
-InsertAfter	插入之後	方法
-InsertBefore	插入之前	方法
 InsertInternalChild	插入內部子項	方法
 InsertLineBreak	插入行中斷	方法
 InsertTextInRun	插入文字在執行	方法
@@ -954,7 +942,7 @@ InternalChildren	內部子項群	屬性
 InternalContains	內部包含	方法
 InternalCount	內部數量	屬性
 InternalGetEnumerator	內部取得列舉器	方法
-InternalIndexOf	內部索引之	方法
+InternalIndexOf	內部索引所屬	方法
 InternalItemAt	內部項目位於	方法
 InternalList	內部清單	屬性
 IsAsync	是否非同步	屬性
@@ -1268,7 +1256,6 @@ SendTo	傳送轉	屬性
 Sequence	序列	屬性
 SetAssemblyPath	設定組件路徑	方法
 SetAttributes	設定特性群	方法
-SetBetweenShowDelay	設定之間顯示延遲	方法
 SetCacheLength	設定快取長度	方法
 SetCacheLengthUnit	設定快取長度單位	方法
 SetColumn	設定欄	方法
@@ -1414,7 +1401,6 @@ Absolute	絕對	列舉值
 AbsolutePoint	絕對點	列舉值
 Active	作用中	列舉值
 AsyncRequestPending	非同步要求擱置	列舉值
-Between	之間	列舉值
 BlockLineHeight	區塊行高度	列舉值
 CanMinimize	可以最小化	列舉值
 CanResize	可以調整大小	列舉值

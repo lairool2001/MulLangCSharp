@@ -50,7 +50,7 @@ WriteByte	寫位元組	方法
 Completed	已完成	列舉值
 InvalidToken	無效權杖	列舉值
 None	無	列舉值
-OutOfSequence	輸出之序列	列舉值
+OutOfSequence	輸出所屬序列	列舉值
 Sign	正負號	列舉值
 TargetUnknown	目標未知	列舉值
 WhenSupported	當已支援	列舉值

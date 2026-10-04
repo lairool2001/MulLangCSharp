@@ -50,6 +50,9 @@ public sealed class IntelliSenseService
 
     public bool Enabled => !_editor.IsReadOnly;
 
+    /// <summary>打字時把全形符號自動換成半形（預設關閉：全形與半形互通，打什麼就保留什麼）。</summary>
+    public bool ConvertFullWidthOnTyping { get; set; }
+
     // ───────────────────────── 分析 ─────────────────────────
 
     private Analysis Analyze()
@@ -82,7 +85,7 @@ public sealed class IntelliSenseService
 
     /// <summary>在這些字元之後（尚未輸入任何字）也自動顯示完成清單。</summary>
     private static bool IsAutoTriggerChar(char c) =>
-        c is ' ' or '\t' or '(' or ',' or '=' or '{' or '[' or '!' or '+' or '-' or '*' or '/' or '%' or
+        c is ' ' or '\t' or KeywordDictionary.SpaceChar or '(' or ',' or '=' or '{' or '[' or '!' or '+' or '-' or '*' or '/' or '%' or
              '<' or '>' or '&' or '|' or '?' or ':' or ';';
 
     /// <summary>
@@ -117,8 +120,66 @@ public sealed class IntelliSenseService
                 ShowCompletion(explicitInvoke: false);
         }, System.Windows.Threading.DispatcherPriority.Background);
 
+    /// <summary>打字時要直接換成半形的全形符號（字串與註解內不換）。</summary>
+    private static readonly Dictionary<char, char> FullWidthBrackets = new()
+    {
+        ['（'] = '(', ['）'] = ')', ['｛'] = '{', ['｝'] = '}',
+        ['，'] = ',', ['＜'] = '<', ['＞'] = '>', ['＄'] = '$', ['［'] = '[', ['］'] = ']',
+    };
+
+    /// <summary>全形雙引號：字串中打「＂」通常是要結束字串，因此只有在註解中才保留全形。</summary>
+    private const char FullWidthQuote = '＂';
+
+    /// <summary>游標位置是否在字串或註解中。</summary>
+    private bool CaretInStringOrComment()
+    {
+        try
+        {
+            var a = Analyze();
+            return IsInStringOrComment(a.Tree.GetRoot(), a.Translation.ToTranslatedCaret(_editor.CaretOffset));
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+
+    /// <summary>游標位置是否在註解中。</summary>
+    private bool CaretInComment()
+    {
+        try
+        {
+            var a = Analyze();
+            int pos = a.Translation.ToTranslatedCaret(_editor.CaretOffset);
+            var trivia = a.Tree.GetRoot().FindTrivia(pos > 0 ? pos - 1 : pos);
+            return trivia.IsKind(SyntaxKind.SingleLineCommentTrivia) || trivia.IsKind(SyntaxKind.MultiLineCommentTrivia) ||
+                   trivia.IsKind(SyntaxKind.SingleLineDocumentationCommentTrivia) || trivia.IsKind(SyntaxKind.MultiLineDocumentationCommentTrivia);
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+
     private void OnTextEntering(object sender, TextCompositionEventArgs e)
     {
+        // 全形符號（輸入法中文模式）→ 半形，讓後續的參數資訊、自動完成照常運作。
+        if (Enabled && ConvertFullWidthOnTyping && e.Text.Any(ch => FullWidthBrackets.ContainsKey(ch) || ch == FullWidthQuote))
+        {
+            bool inComment = CaretInComment();
+            bool inStringOrComment = inComment || CaretInStringOrComment();
+            var converted = new string(e.Text.Select(ch =>
+                ch == FullWidthQuote ? (inComment ? ch : '"')
+                : FullWidthBrackets.TryGetValue(ch, out var h) && !inStringOrComment ? h
+                : ch).ToArray());
+            if (converted != e.Text)
+            {
+                e.Handled = true;
+                _editor.TextArea.PerformTextInput(converted);
+                return;
+            }
+        }
+
         if (_completion is null || e.Text.Length != 1) return;
         char c = e.Text[0];
         bool commitChar = c is '(' or '.' or ';' or '[' or KeywordDictionary.MemberAccessChar;
@@ -138,11 +199,7 @@ public sealed class IntelliSenseService
         if (!Enabled || e.Text.Length == 0) return;
         char last = e.Text[^1];
 
-        if (last is '(' or ',')
-        {
-            ShowParameterInfo();
-            return;
-        }
+        if (last is '(' or ',') ShowParameterInfo();
         if (last == ')')
         {
             UpdateInsight();
@@ -156,7 +213,15 @@ public sealed class IntelliSenseService
 
         if (_completion is not null)
         {
+            // 篩選後已無符合項目（例如輸入了空白或「之」）就關閉，接著依下面的規則重新判斷。
             if (_completion.CompletionList.ListBox is { Items.Count: 0 }) _completion.Close();
+            else return;
+        }
+
+        // 空白、「之」、運算符號之後（尚未輸入任何字）也自動顯示。
+        if (IsAutoTriggerChar(last))
+        {
+            ShowCompletion(explicitInvoke: false);
             return;
         }
 
@@ -176,7 +241,7 @@ public sealed class IntelliSenseService
         while (start > 0)
         {
             char c = doc.GetCharAt(start - 1);
-            if (!Translator.IsIdentPart(c) || c == KeywordDictionary.MemberAccessChar) break;
+            if (!Translator.IsIdentPart(c) || c is KeywordDictionary.MemberAccessChar or KeywordDictionary.SpaceChar) break;
             start--;
         }
         return start;
