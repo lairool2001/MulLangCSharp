@@ -42,3 +42,4 @@ IfRange	若範圍	列舉值
 Location	座標	列舉值
 Range	範圍	列舉值
 Server	伺服器	列舉值
+Translate	平移	列舉值

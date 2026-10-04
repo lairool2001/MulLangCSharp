@@ -26,6 +26,8 @@ ExpressionConverter	運算式轉換器	類別
 GroupDescription	群組描述	類別
 ICollectionView	集合物件檢視介面	介面
 ICollectionViewFactory	集合物件檢視工廠介面	介面
+Int32Rect	整數32方框	結構
+Int32RectConverter	整數32方框轉換器	類別
 ItemPropertyInfo	項目屬性資訊	類別
 Key	鍵	列舉
 KeyConverter	鍵轉換器	類別
@@ -36,6 +38,8 @@ Point	點	結構
 PointConverter	點轉換器	類別
 PropertyFilterAttribute	屬性篩選器特性	類別
 PropertyFilterOptions	屬性篩選器選項群	列舉
+Rect	方框	結構
+RectConverter	方框轉換器	類別
 SizeConverter	大小轉換器	類別
 SortDescription	排序描述	結構
 SortDescriptionCollection	排序描述集合物件	類別
@@ -281,6 +285,8 @@ Top	頂端	屬性
 TopLeft	頂端左	屬性
 TopRight	頂端右	屬性
 TraceLevelProperty	追蹤層級屬性	欄位
+Translate	平移	方法
+TranslateChar	平移字元	方法
 TryGetValue	嘗試取得值	方法
 TypeId	型別識別碼	屬性
 ValidFrom	有效從	屬性

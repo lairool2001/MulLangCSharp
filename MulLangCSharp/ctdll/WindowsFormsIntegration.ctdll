@@ -29,6 +29,8 @@ DoubleClick	雙精度按一下	事件
 EndInvoke	結尾叫用	方法
 Enter	輸入鍵	事件
 Exception	例外	屬性
+FontFamily	字型家族	屬性
+FontFamilyProperty	字型家族屬性	欄位
 FontSize	字型大小	屬性
 FontSizeProperty	字型大小屬性	欄位
 FontStyle	字型風格	屬性

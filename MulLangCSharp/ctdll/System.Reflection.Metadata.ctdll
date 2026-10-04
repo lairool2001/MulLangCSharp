@@ -427,6 +427,8 @@ Align512Bytes	對齊512位元組群	列舉值
 Align64Bytes	對齊64位元組群	列舉值
 Align8192Bytes	對齊8192位元組群	列舉值
 Align8Bytes	對齊8位元組群	列舉值
+Alpha	透明度	列舉值
+Alpha64	透明度64	列舉值
 And	與	列舉值
 Assembly	組件	列舉值
 AssemblyProcessor	組件處理器	列舉值

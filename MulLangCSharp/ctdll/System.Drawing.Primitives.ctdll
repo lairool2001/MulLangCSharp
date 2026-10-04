@@ -8,6 +8,7 @@ Size	大小	結構
 Color	色彩	結構
 Point	點	結構
 Rectangle	矩形	結構
+SystemColors	系統色彩集	類別
 Equals	相等	方法
 Empty	空白	欄位
 GetHashCode	取得雜湊程式碼	方法

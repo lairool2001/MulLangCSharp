@@ -500,6 +500,7 @@ DataMember	資料成員	屬性
 Disable	停用	方法
 DisplayMember	顯示畫面成員	屬性
 DrawDefault	繪製預設	屬性
+DrawToBitmap	繪製轉點陣圖	方法
 Exception	例外	屬性
 FromHandle	從控制代碼	方法
 GetBounds	取得邊界	方法
@@ -634,6 +635,7 @@ AutoScaleBaseSize	自動縮放基底大小	屬性
 Back	返回	方法
 BackgroundColor	背景色彩	屬性
 BasePath	基底路徑	屬性
+Bitmap	點陣圖	欄位
 BorderColor	框線色彩	屬性
 ButtonClick	按鈕按一下	事件
 ButtonSelectedBorder	按鈕已選取框線	屬性
@@ -684,6 +686,7 @@ GetFirstColumn	取得第一個欄	方法
 GetFirstRow	取得第一個列	方法
 GetFormat	取得格式化	方法
 GetImage	取得影像	方法
+GetItemRect	取得項目方框	方法
 GetItems	取得項目群	方法
 GetList	取得清單	方法
 GetListItemType	取得清單項目型別	方法
@@ -863,6 +866,7 @@ AutoResize	自動調整大小	方法
 Available	可用	屬性
 BackButtonClick	返回按鈕按一下	事件
 BeepOnError	嗶聲於錯誤	屬性
+BitsPerPixel	位元群每像素	屬性
 BoundDialog	界限對話方塊	屬性
 BoundPage	界限頁面	屬性
 Break	中斷	屬性
@@ -922,6 +926,7 @@ CurrentRowIndex	目前列索引	屬性
 CurrentValue	目前值	屬性
 CursorOffset	游標位移	屬性
 CursorSize	游標大小	屬性
+CustomColors	自訂色彩集	屬性
 CustomFormat	自訂格式化	屬性
 DarkDark	深深	方法
 Data	資料	屬性
@@ -1056,6 +1061,7 @@ GetString	取得字串	方法
 GetStyle	取得風格	方法
 GetSubItemAt	取得子項目位於	方法
 GetTabPageOfComponent	取得索引標籤頁面所屬元件	方法
+GetTabRect	取得索引標籤方框	方法
 GetTopLevel	取得頂端層級	方法
 GroupImageList	群組影像清單	屬性
 GroupIndex	群組索引	屬性
@@ -1082,6 +1088,7 @@ InnerText	內層文字	屬性
 InsertCopy	插入複製	方法
 InsertRange	插入範圍	方法
 Interval	間隔	屬性
+InvalidRect	無效方框	屬性
 InvalidateColumn	使無效欄	方法
 InvalidatePreview	使無效預覽	方法
 InvalidateRow	使無效列	方法
@@ -1341,6 +1348,7 @@ SetCompatibleTextRenderingDefault	設定相容文字轉譯預設	方法
 SetComponent	設定元件	方法
 SetDate	設定日期	方法
 SetDefaultFont	設定預設字型	方法
+SetDisplayRectLocation	設定顯示畫面方框座標	方法
 SetError	設定錯誤	方法
 SetHelpString	設定說明字串	方法
 SetHighDpiMode	設定高解析度模式	方法
@@ -1381,6 +1389,7 @@ ShowReadOnly	顯示讀取僅	屬性
 ShowRootLines	顯示根行群	屬性
 ShowSaveAsDialog	顯示儲存為對話方塊	方法
 ShowToday	顯示今天	屬性
+ShowTodayCircle	顯示今天圓形	屬性
 ShowUpDown	顯示上下	屬性
 SingleMonthSize	單一月大小	屬性
 SizeAll	大小全部	屬性
@@ -1438,6 +1447,7 @@ UpdateRowHeightInfo	更新列高度資訊	方法
 UpdateStyles	更新樣式群	方法
 UseDescriptionForTitle	使用描述給標題	屬性
 UseItemStyleForSubItems	使用項目風格給子項目群	屬性
+UseSystemColors	使用系統色彩集	屬性
 UseVisualStyles	使用視覺樣式群	屬性
 UserAddedRow	使用者已新增列	事件
 UserName	使用者名稱	屬性
@@ -1471,6 +1481,7 @@ Dpi	解析度	列舉值
 RowHeader	列標頭	列舉值
 Fill	填入	列舉值
 Solid	實心	列舉值
+Alpha	透明度	列舉值
 Append	附加	列舉值
 Auto	自動	列舉值
 Border	框線	列舉值
@@ -1504,6 +1515,8 @@ Absolute	絕對	列舉值
 Adjust	調整	列舉值
 Alias	別名	列舉值
 Allow	允許	列舉值
+AlphaFull	透明度完整	列舉值
+AlphaLevel	透明度層級	列舉值
 ApplicationExitCall	應用程式結束調用	列舉值
 ArrayValue	陣列值	列舉值
 Ascending	升冪	列舉值

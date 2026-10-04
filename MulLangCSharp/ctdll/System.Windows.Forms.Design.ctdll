@@ -101,6 +101,7 @@ AddNode	新增節點	方法
 AdjustOffset	調整位移	方法
 AssemblyName	組件名稱	屬性
 AutoShow	自動顯示	屬性
+Bitmap	點陣圖	屬性
 CanAddComponent	可以新增元件	方法
 CanDisplayComponent	可以顯示畫面元件	方法
 CanRemoveInstance	可以移除執行個體	方法
@@ -177,7 +178,9 @@ Mode	模式	欄位
 Modified	已修改	屬性
 MoveNext	移動下一個	方法
 NewItemTypes	新項目型別群	屬性
+NewSurface	新表面	屬性
 Offset	位移	屬性
+OldSurface	舊表面	屬性
 OnComponentRename	於元件重新命名	方法
 OnKeyPress	於鍵按下	方法
 OnNodeMouseClick	於節點滑鼠按一下	方法
@@ -221,6 +224,7 @@ ShowInSourceView	顯示在來源檢視	屬性
 Start	啟動	方法
 State	狀態	屬性
 Stop	停止	方法
+Surface	表面	屬性
 UseMethod	使用方法	方法
 ValidateMethodName	驗證方法名稱	方法
 ValidatePropertyType	驗證屬性型別	方法

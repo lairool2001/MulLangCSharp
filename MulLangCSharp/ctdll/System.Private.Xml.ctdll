@@ -513,6 +513,7 @@ ToTimeOnly	轉時間僅	方法
 ToTimeOnlyIgnoreOffset	轉時間僅忽略位移	方法
 ToTimeSpan	轉時間跨度	方法
 TopLevelElement	頂端層級元素	方法
+Translate	平移	方法
 Use	使用	屬性
 ValidateEndOfAttributes	驗證結尾所屬特性群	方法
 Values	值群	屬性

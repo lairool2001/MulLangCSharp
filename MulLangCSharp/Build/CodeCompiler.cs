@@ -207,7 +207,8 @@ public static class CodeCompiler
         {
             var dir = Path.GetDirectoryName(dll)!;
             var stem = Path.GetFileNameWithoutExtension(dll);
-            foreach (var file in Directory.GetFiles(dir, stem + ".*"))
+            // 同名的 pdb、ctdll，以及同資料夾的其他 dll（例如 SkiaSharp 需要的原生 libSkiaSharp.dll）
+            foreach (var file in Directory.GetFiles(dir, stem + ".*").Concat(Directory.GetFiles(dir, "*.dll")).Distinct(StringComparer.OrdinalIgnoreCase))
                 File.Copy(file, Path.Combine(outputDir, Path.GetFileName(file)), overwrite: true);
             result.Notes.Add("已參考使用者組件：" + dll);
         }

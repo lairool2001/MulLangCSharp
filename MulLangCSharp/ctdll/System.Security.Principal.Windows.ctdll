@@ -8,6 +8,7 @@ Windows	視窗群	命名空間
 SafeAccessTokenHandle	安全存取權杖控制代碼	類別
 SecurityIdentifier	安全性識別項	類別
 WindowsAccountType	視窗群帳戶型別	列舉
+Translate	平移	方法
 Equals	相等	方法
 GetCurrent	取得目前	方法
 GetHashCode	取得雜湊程式碼	方法

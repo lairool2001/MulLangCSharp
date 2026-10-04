@@ -235,6 +235,9 @@ DeclareValueTypes	宣告值型別群	列舉值
 Divide	除	列舉值
 End	結尾	列舉值
 EntryPointMethod	條目點方法	列舉值
+Family	家族	列舉值
+FamilyAndAssembly	家族與組件	列舉值
+FamilyOrAssembly	家族或組件	列舉值
 GenericTypeParameter	泛型型別參數	列舉值
 GenericTypeReference	泛型型別引用	列舉值
 GlobalReference	全域引用	列舉值

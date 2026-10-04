@@ -55,6 +55,7 @@ SetBuffer	設定緩衝區	方法
 Accept	接受	方法
 AcceptSocket	接受通訊端	屬性
 AcceptSocketAsync	接受通訊端非同步	方法
+AddressFamily	位址家族	屬性
 BeginSendFile	開始傳送檔案	方法
 Client	用戶端	屬性
 Count	數量	屬性
@@ -159,6 +160,7 @@ SelectRead	選取讀取	列舉值
 SelectWrite	選取寫	列舉值
 SendBuffer	傳送緩衝區	列舉值
 Stream	資料流	列舉值
+TranslateHandle	平移控制代碼	列舉值
 Type	型別	列舉值
 TypeOfService	型別所屬服務	列舉值
 UpdateAcceptContext	更新接受內容環境	列舉值

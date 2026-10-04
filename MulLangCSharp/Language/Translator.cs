@@ -75,9 +75,9 @@ public static class Translator
     /// </summary>
     private static TranslationResult AutoSemicolons(TranslationResult r)
     {
-        // 第一步：行尾單獨的「回傳」「拋出」先補「;」，否則 Roslyn 會把下一行當成回傳值（return 名稱 = …）。
+        // 第一步：行尾單獨的「回傳」「拋出」「中斷」「繼續」先補「;」，否則 Roslyn 會把下一行接上去（return 名稱 = …、continue 標籤）。
         r = InsertSemicolons(r, (tree, text) => tree.GetRoot().DescendantTokens()
-            .Where(t => t.RawKind is (int)SyntaxKind.ReturnKeyword or (int)SyntaxKind.ThrowKeyword)
+            .Where(t => t.RawKind is (int)SyntaxKind.ReturnKeyword or (int)SyntaxKind.ThrowKeyword or (int)SyntaxKind.BreakKeyword or (int)SyntaxKind.ContinueKeyword)
             .Where(t => t.GetNextToken() is var next && next.RawKind != (int)SyntaxKind.SemicolonToken &&
                         (next.RawKind == (int)SyntaxKind.EndOfFileToken || LineOf(text, next.SpanStart) > LineOf(text, t.Span.End)))
             .Select(t => t.Span.End));

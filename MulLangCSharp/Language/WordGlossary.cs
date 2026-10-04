@@ -9,6 +9,23 @@ public static class WordGlossary
 {
     public static readonly IReadOnlyDictionary<string, string> Words = Parse("""
         abort=中止
+        sk=SK
+        alpha=透明度
+        antialias=抗鋸齒
+        bitmap=點陣圖
+        canvas=畫布
+        circle=圓形
+        colors=色彩集
+        family=家族
+        oval=橢圓形
+        pixel=像素
+        pixels=像素群
+        premul=預乘
+        rect=方框
+        stroke=筆畫
+        surface=表面
+        translate=平移
+        typeface=字體
         anti=抗
         aware=感知
         bold=粗體

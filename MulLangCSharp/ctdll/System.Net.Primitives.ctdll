@@ -7,6 +7,7 @@ Security	安全性	命名空間
 System	系統	命名空間
 Cache	快取	命名空間
 Text	文字	命名空間
+AddressFamily	位址家族	列舉
 SocketError	通訊端錯誤	列舉
 EndPoint	結尾點	類別
 PathList	路徑清單	類別
@@ -41,6 +42,7 @@ Capacity	容量	屬性
 Comment	備註	屬性
 CommentUri	備註統一資源識別碼	屬性
 ErrorCode	錯誤程式碼	屬性
+Family	家族	屬性
 GetAddressBytes	取得位址位元組群	方法
 GetMaximumAddressSize	取得最大限度位址大小	方法
 GetObjectData	取得物件資料	方法
@@ -67,6 +69,7 @@ Version20	版本20	欄位
 Version30	版本30	欄位
 Default	預設	列舉值
 AddressAlreadyInUse	位址已經在使用	列舉值
+AddressFamilyNotSupported	位址家族不已支援	列舉值
 AddressNotAvailable	位址不可用	列舉值
 All	全部	列舉值
 AlreadyInProgress	已經在進度	列舉值

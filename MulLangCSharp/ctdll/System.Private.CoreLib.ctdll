@@ -1186,6 +1186,9 @@ IsAssembly	是否組件	屬性
 IsAsync	是否非同步	屬性
 IsClosed	是否已關閉	屬性
 IsDynamic	是否動態	屬性
+IsFamily	是否家族	屬性
+IsFamilyAndAssembly	是否家族與組件	屬性
+IsFamilyOrAssembly	是否家族或組件	屬性
 IsFunctionPointer	是否函數指標	屬性
 IsGenericMethodParameter	是否泛型方法參數	屬性
 IsGenericTypeParameter	是否泛型型別參數	屬性
@@ -2101,6 +2104,7 @@ Disable	停用	列舉值
 Event	事件	列舉值
 Explicit	明確	列舉值
 Failed	已失敗	列舉值
+Family	家族	列舉值
 ForwardRef	向前參考	列舉值
 HasSecurity	有安全性	列舉值
 InternalCall	內部調用	列舉值

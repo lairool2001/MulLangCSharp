@@ -147,6 +147,7 @@ BaseIndexOf	基底索引所屬	方法
 BaseIsRemoved	基底是否已移除	方法
 BaseRemove	基底移除	方法
 BaseRemoveAt	基底移除位於	方法
+BitmapSuffix	點陣圖後置詞	屬性
 CallbackMethodName	回呼方法名稱	屬性
 CanConvertFrom	可以轉換從	方法
 CanConvertTo	可以轉換轉	方法

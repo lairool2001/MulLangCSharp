@@ -147,6 +147,8 @@ OnTextInput	於文字輸入	方法
 PathDataProperty	路徑資料屬性	欄位
 PathFill	路徑填入	屬性
 PathFillProperty	路徑填入屬性	欄位
+PathStroke	路徑筆畫	屬性
+PathStrokeProperty	路徑筆畫屬性	欄位
 Preview	預覽	方法
 PreviewCommandParameterProperty	預覽命令參數屬性	欄位
 RemoveCloneHandler	移除再製處理常式	方法
@@ -180,6 +182,7 @@ Width	寬度	屬性
 WidthProperty	寬度屬性	欄位
 Item	項目	列舉值
 Large	大型	列舉值
+Pixel	像素	列舉值
 Small	小	列舉值
 Sub	子	列舉值
 Top	頂端	列舉值

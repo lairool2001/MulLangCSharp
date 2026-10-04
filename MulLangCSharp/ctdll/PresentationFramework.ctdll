@@ -50,6 +50,7 @@ BlockElement	區塊元素	類別
 Bold	粗體	類別
 Button	按鈕	類別
 ButtonBase	按鈕基底	類別
+Canvas	畫布	類別
 CheckBox	檢查方塊	類別
 CollectionSynchronizationCallback	集合物件同步處理回呼	委派
 CollectionViewGroup	集合物件檢視群組	類別
@@ -144,6 +145,7 @@ StackPanel	堆疊面板	類別
 StaticResourceExtension	靜態資源擴充	類別
 StoreContentAction	存放內容動作	列舉
 StreamResourceInfo	資料流資源資訊	類別
+SystemColors	系統色彩集	類別
 SystemParameters	系統參數群	類別
 TabControl	索引標籤控制項	類別
 TabItem	索引標籤項目	類別
@@ -248,6 +250,8 @@ SourceProperty	來源屬性	欄位
 TextAlignment	文字對齊方式	屬性
 TextAlignmentProperty	文字對齊方式屬性	欄位
 Auto	自動	屬性
+FontFamily	字型家族	屬性
+FontFamilyProperty	字型家族屬性	欄位
 FontSize	字型大小	屬性
 FontSizeProperty	字型大小屬性	欄位
 Foreground	前景	屬性
@@ -454,6 +458,7 @@ ShouldSerializeText	應該序列化文字	方法
 SkipToFill	略過轉填入	方法
 SourceName	來源名稱	屬性
 Start	啟動	屬性
+Stroke	筆畫	屬性
 Target	目標	屬性
 TargetName	目標名稱	屬性
 TargetNameProperty	目標名稱屬性	欄位
@@ -534,6 +539,7 @@ ForwardStackProperty	向前堆疊屬性	欄位
 From	從	屬性
 GenerateNext	產生下一個	方法
 GetCurrentValue	取得目前值	方法
+GetFontFamily	取得字型家族	方法
 GetFontSize	取得字型大小	方法
 GetFontStyle	取得字型風格	方法
 GetForeground	取得前景	方法
@@ -542,6 +548,7 @@ GetLineHeight	取得行高度	方法
 GetLineStartPosition	取得行啟動位置	方法
 GetPositionAtOffset	取得位置位於位移	方法
 GetPositionFromPoint	取得位置從點	方法
+GetRectFromCharacterIndex	取得方框從字符索引	方法
 GetTextAlignment	取得文字對齊方式	方法
 GetTextInRun	取得文字在執行	方法
 GroupName	群組名稱	屬性
@@ -595,6 +602,7 @@ PageCountProperty	頁面數量屬性	欄位
 PageNumber	頁面數值	屬性
 PageNumberProperty	頁面數值屬性	欄位
 ParameterType	參數型別	屬性
+PixelSize	像素大小	屬性
 Points	點群	屬性
 PointsProperty	點群屬性	欄位
 Position	位置	屬性
@@ -617,6 +625,7 @@ SelectedValueProperty	已選取值屬性	欄位
 SeparatorBrush	分隔符號筆刷	屬性
 SeparatorBrushProperty	分隔符號筆刷屬性	欄位
 SetCurrent	設定目前	方法
+SetFontFamily	設定字型家族	方法
 SetFontSize	設定字型大小	方法
 SetFontStyle	設定字型風格	方法
 SetForeground	設定前景	方法
@@ -850,6 +859,7 @@ GetCacheLength	取得快取長度	方法
 GetCacheLengthUnit	取得快取長度單位	方法
 GetCharacterIndexFromLineIndex	取得字符索引從行索引	方法
 GetCharacterIndexFromPoint	取得字符索引從點	方法
+GetCharacterRect	取得字符方框	方法
 GetColumn	取得欄	方法
 GetColumnCollection	取得欄集合物件	方法
 GetColumnSpan	取得欄跨度	方法
@@ -1045,6 +1055,8 @@ MaximumWindowTrackWidthKey	最大限度視窗軌道寬度鍵	屬性
 MeasureCore	測量核心	方法
 Member	成員	屬性
 Message	訊息	屬性
+MessageFontFamily	訊息字型家族	屬性
+MessageFontFamilyKey	訊息字型家族鍵	屬性
 MessageFontSize	訊息字型大小	屬性
 MessageFontSizeKey	訊息字型大小鍵	屬性
 MessageFontStyle	訊息字型風格	屬性
@@ -1315,6 +1327,8 @@ StartColumnDisplayIndex	啟動欄顯示畫面索引	屬性
 StartIndex	啟動索引	屬性
 StartIndexProperty	啟動索引屬性	欄位
 StartsWith	開頭為	方法
+StatusFontFamily	狀況字型家族	屬性
+StatusFontFamilyKey	狀況字型家族鍵	屬性
 StatusFontSize	狀況字型大小	屬性
 StatusFontSizeKey	狀況字型大小鍵	屬性
 StatusFontStyle	狀況字型風格	屬性
@@ -1325,6 +1339,13 @@ StoreItemValue	存放項目值	方法
 Stream	資料流	屬性
 StringComparison	字串比較結果	屬性
 StringFormat	字串格式化	屬性
+StrokeDashArray	筆畫虛線陣列	屬性
+StrokeDashArrayProperty	筆畫虛線陣列屬性	欄位
+StrokeDashOffset	筆畫虛線位移	屬性
+StrokeDashOffsetProperty	筆畫虛線位移屬性	欄位
+StrokeLineJoin	筆畫行連接	屬性
+StrokeLineJoinProperty	筆畫行連接屬性	欄位
+StrokeProperty	筆畫屬性	欄位
 StyleTargetType	風格目標型別	屬性
 SupportUri	支援統一資源識別碼	屬性
 TabForward	索引標籤向前	屬性
@@ -1333,11 +1354,13 @@ TargetContentState	目標內容狀態	屬性
 TargetNullValue	目標空值	屬性
 TargetPropertyProperty	目標屬性屬性	欄位
 TargetPropertyType	目標屬性型別	屬性
+TargetRect	目標方框	屬性
 TextBoxStyleKey	文字方塊風格鍵	屬性
 TextPathProperty	文字路徑屬性	欄位
 TextRenderingModeProperty	文字轉譯模式屬性	欄位
 ThrowException	拋出例外	屬性
 ToProperty	轉屬性	欄位
+TranslateCharCore	平移字元核心	方法
 TryGetIndex	嘗試取得索引	方法
 TryGetMember	嘗試取得成員	方法
 TryGetValue	嘗試取得值	方法
@@ -1381,6 +1404,7 @@ WindowTextColor	視窗文字色彩	屬性
 WindowTextColorKey	視窗文字色彩鍵	屬性
 WindowTitle	視窗標題	屬性
 WindowWidth	視窗寬度	屬性
+Pixel	像素	列舉值
 Forward	向前	列舉值
 Normal	一般	列舉值
 Added	已新增	列舉值
