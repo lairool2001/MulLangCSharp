@@ -7,6 +7,7 @@ dotnet run --project MulLangCSharp
 ```
 
 <img width="2560" height="1392" alt="image" src="https://github.com/user-attachments/assets/28426977-2ae7-428a-9145-46c9299fdde0" />
+![Uploading image.png…]()
 
 
 ## 自然對人工語言轉換
