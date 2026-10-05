@@ -6,6 +6,9 @@
 dotnet run --project MulLangCSharp
 ```
 
+<img width="2560" height="1392" alt="image" src="https://github.com/user-attachments/assets/28426977-2ae7-428a-9145-46c9299fdde0" />
+
+
 ## 自然對人工語言轉換
 
 把中文（自然語言）寫成的程式碼轉換成 C#（人工語言）的機制，規則如下：
